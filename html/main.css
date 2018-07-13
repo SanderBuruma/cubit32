@@ -1,0 +1,70 @@
+body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+p{
+    color:rgb(0, 0, 128)
+}
+
+header p{
+    color:black;
+    font-size: 30px;
+}
+
+h1{ 
+    font-size: 36px;
+    color: rgb(64, 0, 128)
+}
+
+article{
+    width: 800px;
+    margin: auto;
+}
+
+article figure{
+    width: 600px;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+article figure img{
+    width: 100%;
+}
+
+
+nav{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+nav a{
+    border: 2px solid blue;
+    padding: 5px;
+    background-color: rgb(191, 191, 255);
+    border-radius: 5px;
+    margin-right: 25px;
+    text-decoration: none;
+}
+
+nav a:hover{
+    text-decoration: underline;
+}
+
+input[type="text"],
+textarea[name="comment"] {
+    border: 1px solid blue;
+    padding: 5px;
+    margin-bottom: 3px;
+}
+
+.posted-by{
+    background-color:rgb(128, 192, 255);
+    width:300px;
+}
+
+
+#comment-form{
+    width: 500px;
+    margin: auto;
+}
