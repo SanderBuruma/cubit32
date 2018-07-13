@@ -12,7 +12,7 @@ based on typeracer.com
 <link rel="stylesheet" href="./main.css">
 <link rel="icon" href="http://icons.iconarchive.com/icons/fatcow/farm-fresh/16/keyboard-icon.png"> 
 <nav class="unselectable">
-    <a href="../localhost/ScriboCursim/index.php">Scribo Cursim</a><a href="../localhost/index.php">Blog</a><a>Contact</a><a>Competition</a>
+    <a href="./index.php">Scribo Cursim</a><a href="../index.php">Blog</a><a>Contact</a><a>Competition</a>
 </nav>
 <body>
     <div        id="scribum-box"      class="scribum-box">
