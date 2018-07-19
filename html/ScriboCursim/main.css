@@ -1,9 +1,9 @@
-.text-was-typed{
-    color:green;
-}
-
 body{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a{
+    color:rgb(255, 59, 92)
 }
 
 nav{
@@ -14,8 +14,9 @@ nav{
 
 nav a{
     border: 2px solid blue;
+    color: blue;
     padding: 5px;
-    background-color: rgb(191, 191, 255);
+    background-color:lightblue;
     border-radius: 5px;
     margin-right: 25px;
     text-decoration: none;
@@ -25,7 +26,8 @@ nav a:hover{
     text-decoration: underline;
 }
 
-.scribum-box{
+.main-menu,
+.scribo-box{
     width: 40%;
     padding: 5px;
     border: 3px solid #aaaaff;
@@ -34,17 +36,33 @@ nav a:hover{
     user-select: none;
     position: absolute;
     left: 30%;
-    top: 5%;
+    top: 10%;
+    font-size: 20px;
 }
 
-.text-to-read{
-    color: rgb(94, 94, 94);
+.text-input{
+    color: #555;
     width: 98%;
     height: 35px;
+    font-family: Arial,serif;
+    font-size: 26px;
     margin-top: 2px;
     margin-bottom: 10px;
-    background: transparent none repeat scroll 0;
+    background: #eee;
     border-width: medium;
+}
+
+.text-was-typed {
+    color:green;
+}
+
+.text-next-char{
+    text-decoration: underline;
+    color: rgb(94, 94, 94);
+}
+
+.text-to-type {
+    color: rgb(94, 94, 94);
 }
 
 .unselectable {
@@ -56,14 +74,14 @@ nav a:hover{
     user-select: none;
 }
 
-#text-input{
-    color: #555;
-    width: 98%;
-    height: 35px;
-    font-family: Arial,serif;
-    font-size: 26px;
-    margin-top: 2px;
-    margin-bottom: 10px;
-    background: #eee;
-    border-width: medium;
+
+.text-wrong,
+.error{
+    color: red;
+    background-color: lightcoral;
+}
+
+.complete{
+    background-color: lightgreen;
+    border-color: green;
 }
