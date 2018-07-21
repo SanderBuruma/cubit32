@@ -17,7 +17,7 @@ $txtdbs = file("database.txt");//text database
 $text = $txtdbs[(rand(0,count($txtdbs)-1))];//pick random line from the database file
 ?>
 <nav class="unselectable">
-	<a href="./index.php">Scribo Cursim</a><a href="../index.php">Blog</a><a href="./test.php">Test</a><a>Competition</a>
+	<a href="./index.php">Scribo Cursim</a><a href="../index.php">Blog</a><a href="./test.php">Test</a><a href="../sqltest/index.php">sqltest</a>
 </nav>
 	<div			id="main-menu"		class="main-menu unselectable">
 		<span><a id="main-menu-practice" href="javascript:;">>Practice<</a><br>Improve your typing skills!</span>

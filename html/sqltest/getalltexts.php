@@ -1,5 +1,5 @@
 
-<!DOCTYPE html><!-- mostly copy pasted from w3schools -->
+<!DOCTYPE html><!-- mostly copy pasted from w3schools.com -->
 <html>
 <head>
 <style>
@@ -27,26 +27,24 @@ if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
 
-mysqli_select_db($con,"ajax_demo");
-$sql="SELECT * FROM texts";
+mysqli_select_db($con,"if you're reading this then the precise content of this line is not important at all");
+$sql="SELECT id FROM texts";
 $result = mysqli_query($con,$sql);
-
-echo "<table>
-<tr>
-<th>id</th>
-<th>author</th>
-<th>book</th>
-<th>text</th>
-</tr>";
+$idarray = array();
 while($row = mysqli_fetch_array($result)) {
-    echo "<tr>";
-    echo "<td>" . $row['id'] . "</td>";
-    echo "<td>" . $row['author'] . "</td>";
-    echo "<td>" . $row['book'] . "</td>";
-    echo "<td>" . $row['text'] . "</td>";
-    echo "</tr>";
+    array_push($idarray, $row['id']);
 }
-echo "</table>";
+print_r($idarray).'<br>';
+print_r($result).'<br>';
+$sql="SELECT * FROM texts where id = ".($idarray[array_rand($idarray)]);
+$result = mysqli_query($con,$sql);
+print_r($result).'<br>';
+while($row = mysqli_fetch_array($result)) {
+    echo $row['id'].'<br>';
+    echo $row['author'].'<br>';
+    echo $row['book'].'<br>';
+    echo $row['text'].'<br>';
+}
 mysqli_close($con);
 ?>
 </body>

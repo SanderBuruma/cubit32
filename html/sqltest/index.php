@@ -5,7 +5,7 @@
     <title>sql request test page</title>
 </head>
 <script>
-function showUser(str) {
+function showText(str) {
     console.log('button pushed')
     if (str == "") {
 		document.getElementById("txtHint").innerHTML = "";
@@ -16,11 +16,11 @@ function showUser(str) {
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
 			xmlhttp = new XMLHttpRequest();
-			console.log('niet IE 5 of 6')
+			console.log('not IE 5 or 6')
         } else {
             // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-			console.log('IE 5 of 6')
+			console.log('IE 5 or 6')
         }
         console.log(xmlhttp)
         xmlhttp.onreadystatechange = function() {
@@ -34,6 +34,6 @@ function showUser(str) {
 }
 </script>
 <body>
-<div id="txtHint"><a href="javascript:;" onclick="showUser()">Test "Button"</a></div>
+<div id="txtHint"><a href="javascript:;" onclick="showText()">Test "Button"</a></div>
 </body>
 </html>

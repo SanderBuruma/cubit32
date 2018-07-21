@@ -11,7 +11,7 @@ Author: Sander "Cubit32" Buruma
 </head>
 <body>
     <nav class="unselectable">
-        <a href="ScriboCursim/index.php">Scribo Cursim</a><a href="index.php">Blog</a><a href="ScriboCursim/test.php">Test</a><a>Competition</a>
+        <a href="../ScriboCursim/index.php">Scribo Cursim</a><a href="../index.php">Blog</a><a href="../ScriboCursim/test.php">Test</a><a href="./sqltest/index.php">sqltest</a>
     </nav>
     <article>
         <header>

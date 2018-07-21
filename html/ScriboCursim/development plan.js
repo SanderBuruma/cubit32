@@ -2,6 +2,7 @@
 let epicPlan = new Array("Text box met input.",
 "Verwerking vd input dat uitwerkt in het kleuren van de tekst, goed getypte tekst is groen en fout rood.")
 epicPlan.push('Zelfde als 1 maar txt is vervangen door sql.')
+epicPlan.push('Zelfde navbar op elke pagina.')
 epicPlan.push('Vertoont auteur en boek na correct typen tekst.')
 epicPlan.push('Inlog & registratie database + functionaliteit.')
 epicPlan.push('Opslag wpm races en deze weergeven op request.')
