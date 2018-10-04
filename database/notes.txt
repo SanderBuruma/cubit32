@@ -1,0 +1,6 @@
+lijst info
+    thumbnail
+    m2
+    adres
+    huur
+
