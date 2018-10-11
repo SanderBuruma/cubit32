@@ -1,0 +1,384 @@
+:root{
+  --white: white;
+  --blueish: #88f;
+  --purpleish: #b4f;
+  --shadow: 0 1px 5px rgba(#666d);
+  --border: 2px dashed var(--blueish);
+  --borderwhite: 2px dashed var(--white);
+}
+
+body {
+  font-family:"europa",Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--blueish);
+  margin: 0px;
+}
+a{
+  text-decoration: none;
+}
+a:visited{
+  color: var(--blueish)
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.bluebg {
+  margin-top: -25px;
+  background-color: var(--blueish);
+  padding-bottom: 100px;
+}
+
+
+#nav{
+  position:fixed;
+  z-index: 10;
+}
+/* nav */
+.dropbtn {
+  padding: 12px;
+  font-size: 28px;
+  border: var(--border);
+  cursor: pointer;
+}
+.dropdown {
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  right: 0;
+  background-color: var(--blueish);
+  color: var(--white);
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px var(--blueish);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: var(--white);
+  padding: 12px 16px;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: var(--white);
+  color: var(--blueish);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+  border: var(--borderwhite);
+  border-left: 0px;
+}
+.dropdown:hover .dropbtn {
+  background-color: var(--blueish);
+  border: var(--borderwhite);
+  border-left: 0px;
+  border-bottom: 0px;
+  color: var(--white);
+}
+.dropdown .dropbtn {
+  background-color: var(--white);
+}
+
+/* wrapper */
+#wrapper{
+  background-color: var(--white);
+}
+
+/* header */
+.striketr:hover{
+  text-decoration: line-through;
+}
+#header{
+  background-color: var(--white);
+  margin: 0px;
+  padding: 0px;
+}
+
+#myname > div{
+  height: 200px;
+}
+
+#changing-text-container{
+  width: 18em;
+  height: 8em;
+  margin: 1em auto;
+  overflow: hidden;
+  background: white;
+  position: relative;
+  box-sizing: border-box;
+}
+#changing-text{
+  top: 2em;
+  position: relative;
+  box-sizing: border-box;
+  animation: changing-text 33s linear infinite;
+	margin: 0;
+  padding: 0 1em;
+  line-height: 1.5em;
+  font: 1.4em 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+}
+#changing-text:hover{
+  animation-play-state: paused;
+}
+@keyframes changing-text {
+  0%   { top: 11em }
+  100% { top: -34em }
+}
+#changing-text-container:before, #changing-text-container::before,
+#changing-text-container:after,  #changing-text-container::after {
+    left: 0;
+    z-index: 1;
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 2em;
+    background-image: linear-gradient(180deg, var(--white), rgba(255,255,255,0));
+}
+#changing-text-container:after,  #changing-text-container::after{
+  bottom: 0;
+  transform: rotate(180deg);  
+}
+#changing-text-container:before, #changing-text-container::before{
+  top: 0;
+}
+
+
+/*#myname */
+#myname{
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+#myname > h1{
+  font-size: 60px;
+}
+@media screen and (max-width: 800px){
+  #myname > h1{
+    font-size: 40px;
+  }
+}
+#myname > p{
+  font-size: 32px;
+}
+#myname > img#portret{
+  width: 20%;
+  min-width: 100px;
+  border-radius: 9999px;
+  border: 8px solid var(--white);
+  transition: border 0.5s;
+}
+#myname > img#desktop{
+  width: 80%;
+  max-width: 800%;
+  vertical-align: bottom;
+  mix-blend-mode: multiply;
+}
+
+#about{
+  background: var(--blueish);
+  color: var(--white);
+  padding: 20%;
+  text-align: center;
+  line-height: 30px;
+}
+
+/*#services */
+#services{
+  font-size: 18px;
+  position: relative;
+  width: 80%;
+  left: 10%;
+  margin-top:-50px;
+  z-index:1;
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  border: var(--border);
+  border-radius: 25px;
+  background-color: var(--white);
+}
+#services > div{
+  text-align:center;
+  padding:25px;
+}
+#services > div:nth-child(2){
+  border-left: var(--border);
+  border-right: var(--border);
+}
+#services > div > h1{
+  font-size: 30px;
+}
+#services > div > h6{
+  color: var(--purpleish);
+  font-size: 16px;
+}
+#services > div > i{ 
+  font-size: 50px;
+  border-radius:50%;    
+  -webkit-transition: -webkit-transform 1.5s ease-in-out;
+  -ms-transition: -ms-transform 1.5s ease-in-out;
+  transition: transform 1.5s ease-in-out;
+}
+#services > div > i:hover{
+  transform:rotate(360deg);
+  -ms-transform:rotate(360deg);
+  -webkit-transform:rotate(360deg);
+}
+.easteregg1{
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+.easteregg1:hover{
+  opacity: 1;
+}
+
+@media screen and (max-width: 800px){
+  #services{
+    grid-template-columns: 1fr;
+  }
+  #services > div:nth-child(2){
+    border-top: var(--border);
+    border-bottom: var(--border);
+    border-left: 0px;
+    border-right: 0px;
+  }
+}
+
+/* I don't allow this to be on the #projects grid */
+#preprojects{
+  background: var(--blueish);
+  color: var(--white);
+  padding: 0%;
+  padding-top: 100px;
+  text-align: center;
+  line-height: 30px;
+  margin-top:-50px;
+  z-index: 2;
+}
+
+/*#projects */
+#projects{
+  margin-left: 10%;
+  width: 80%;
+  display: flex;
+  border: var(--border);
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1.5em;
+  position: relative;
+}
+#projects > div{
+  width: 330px;
+  height: 12em;
+  font-size: 1em;
+  margin: 0.5em;
+  padding: 0.5em;
+  background-color: var(--white);
+  border: var(--border);
+  border-radius: 1em;
+  content: 'project';
+  text-align: center;
+  line-height: 1em;
+  position: relative;
+}
+#projects > div > *{
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+#projects > div > img{
+  color: red;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+#projects > div > div{
+  width: 340px;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: var(--blueish);
+}
+#projects > div > div > a{
+  position: relative;
+  padding: 5px;
+  background-color: var(--blueish);
+  border-radius: 1em;
+  border: var(--border);
+  color: white;
+  width: 10em;
+  left: 25%;
+  z-index: 2;
+}
+#projects > div > div > a:hover{
+  background-color: var(--white);
+  color: var(--blueish);
+}
+#projects > div:hover > *{
+  opacity: 1;
+}
+#projects > div:hover :first-child{
+  opacity: 0;
+}
+
+/* contact */
+#contact{
+  font-size: 18px;
+  position: relative;
+  width: 80%;
+  left: 10%;
+  background-color: var(--white);
+  border: var(--border);
+  border-radius: 25px;
+  margin-top: 50px;
+}
+#contact > *{
+  text-align: center;
+}
+#contact > form > input{
+  width: 95%;
+}
+#contact > input[type=text]:not(.text-input), 
+#contact > input[type=password] {
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	box-sizing: border-box;
+}
+.message{
+  height: 200px;
+}
+#contact > form > input[type=submit]{
+	width: 25%;
+	background-color: rgb(78, 76, 175);
+	color: var(--white);
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	border-radius: 8px;
+}
+#contact > div > a{
+  text-decoration: none;
+}
+#contact > div > a{
+  font-size: 40px;
+}
+#contact > div > a.fa-facebook{
+  color: rgb(37, 37, 180);
+}
+#contact > div > a.fa-twitter-square,
+#contact > div > a.fa-linkedin{
+  color: rgb(82, 82, 255);
+}
+#contact > div > a.fa-envelope{
+  color: rgb(255, 59, 59);
+}
