@@ -1,2 +1,2 @@
 # myProjects
-my personal projects and some other things not my own
+the portfolio 2 folder contains my main work and links to my work in working format.
