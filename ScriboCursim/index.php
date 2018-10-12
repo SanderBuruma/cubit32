@@ -21,7 +21,6 @@ loosely based on typeracer.com
 <!-- login, signup and logout buttons -->
 	<div class="user-interface">
 	<?php
-	echo $_SESSION['u_id'];
 		if (isset($_SESSION['u_id']) == false){ echo '
 			<button onclick="document.getElementById(\'id01\').style.display=\'block\'" style="width:auto;">Sign Up</button>
 			<!-- login form -->
@@ -32,7 +31,7 @@ loosely based on typeracer.com
 			</form>
 			';} else {echo '
 		<form action="logout.php" class="logout">
-			<button type="submit" name="submit">Log Out</button>
+			<button type="submit" name="submit">Log Out ('.$_SESSION['u_id'].')'.' </button>
 		</form>';}
 		?>
 	</div>

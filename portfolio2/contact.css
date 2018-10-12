@@ -1,0 +1,58 @@
+form{
+  display: grid;
+  grid-template-areas: 
+    'name  email email'
+    'message message message'
+    'message message message'
+    '. submit .';
+}
+@media screen and (max-width: 600px){
+  form{
+    grid-template-areas: 
+      'name'
+      'email'
+      'message'
+      'submit';
+  }
+  #contact-submit-btn{
+    width: 33%;
+  }
+}
+form > input,
+form > textarea {
+  padding: 1em;
+  font-size: 1.4em;
+  border: var(--blueish) 1px solid;
+}
+form > textarea {
+  font-family: 
+}
+#contact-name {
+  width: 95%;
+  grid-area: name;
+}
+#contact-email {
+  width: 100%;
+  grid-area: email;
+}
+#contact-message {
+  width: 100%;
+  grid-area: message;
+  margin-top: 2em;
+  height: 10em;
+  text-align: top;
+}
+#contact-submit-btn {
+  padding: .5em;
+  width: 100%;
+  grid-area: submit;
+  margin: 1em 0em;
+  background-color: var(--blueish);
+  color: var(--white);
+  border-radius: 2em;
+  transition: 0.2s color ease-in, 0.2s background-color ease-in,0.2s border ease-in;
+}
+#contact-submit-btn:hover {
+  background-color: var(--white);
+  color: var(--blueish);
+}

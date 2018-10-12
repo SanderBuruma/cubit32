@@ -48,7 +48,7 @@ button:hover {
 }
 
 img.avatar {
-	width: 40%;
+	height: 100px;
 	border-radius: 50%;
 }
 
@@ -147,6 +147,10 @@ a:any-link{
 .login{
 	display: grid;
 	grid-template-columns: repeat(3,1fr);
+}
+
+.logout{
+	grid-column: 1/3;
 }
 
 .main-menu,

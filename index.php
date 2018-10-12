@@ -1,3 +1,3 @@
 <?php  
-header("Location: ./portfolio/");
+header("Location: ./portfolio2/");
 ?>
