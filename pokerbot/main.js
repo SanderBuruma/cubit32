@@ -27,6 +27,12 @@ function newHand(){
     document.getElementById('board').append(createCard(cardDeck[i]));
   }
 
+  let tempDeck = [];
+  for (let i=2 ; i<9 ; i++){
+    tempDeck.push(cardDeck[i]);
+  }
+  console.log(getHandValue(tempDeck));
+
   //display final hand strength for both players
 }
 
@@ -47,7 +53,6 @@ function randomDeck(){
 }
 
 function createCard(cardNum){
-  console.log(cardNum);
   let card = document.createElement('div');
   card.classList.add('playing-card');
   card.id = "card"+cardNum;
@@ -73,7 +78,7 @@ function createCard(cardNum){
   return card;
 }
 
-function getHandValue(cards){//cards must be a cards array of the card numbers of 5+ cards
+function getHandValue(cards){//cards must be an array of the card numbers of 5+ cards
 
   //the first return value will be 9 for royal flush, 8 for straight flush, 7 for four of a kind, etc
   //the second is hand strength used to tiebreak against hands of the same type but which are of lower strength (ie, A hi flush vs 5 hi flush)
@@ -85,15 +90,21 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
   //straightflush or royal flush WIP
   //still needs to become able to find the 5 hi str flush
   let suitsCount = [0,0,0,0];
-  for (i in cards){
+  let ranksCount = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+  console.log("cards: "+cards);
+  for (i of cards){
     suitsCount[getSuit(i)]++;
+    ranksCount[getRank(i)]++;
   }
-  for (i in suitsCount){
+  console.log("suitsCount: "+suitsCount);
+  console.log("ranksCount: "+ranksCount);
+  count=0;
+  for (i of suitsCount){
     if (suitsCount[i] > 4){//more than 4 of a suit, so there is a flush
       let flushCards = [];
-      for (j in cards){
+      for (j of cards){
         if (getSuit(j) == i){
-          flushCards.append(j); //fill array
+          flushCards.push(j); //fill array
         }
       }
       flushCards.sort((a,b)=>b-a);//sort descending flushcard array to check whether there are 5 consecutive cards
@@ -103,7 +114,7 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
           consecCount++;
           if (consecCount > 3){ //add one to the count at the same time it checks whether there are 5 consecutive cards
             //straight or royal flush found
-            for (let k=0; k<5 ; k++){returnCards.append(flushCards[k])}
+            for (let k=0; k<5 ; k++){returnCards.push(flushCards[k])}
             if (flushCards[0]%13){
               return [9,0,returnCards,"Royal Flush"]
             }
@@ -112,21 +123,21 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
         } else {consecCount=0}
       }
     }
+    count++;
   }
 
   //four of a kind
-  let ranksCount = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-  for (i in cards){
-    ranksCount[getRank(i)]++
+  //needs to add the four relevant cards to returnCards
+  for (let i=12 ; i>=0 ; i--){
     if (ranksCount[getRank(i)]=4) {//found 4 of a kind
       
       //determine kicker
       let kickerCardArray = [];
-      for (j in cards){
-        if (j != i){
+      for (j of cards){
+        if (getRank(j) != i){
           kickerCardArray.push(j);
         }
-        kickerCardArray.sort((a,b) => b-a);
+        kickerCardArray.sort((a,b) => getRank(b)-getRank(a));
       }
       for (j in cards){
         if (getRank(j) == i){
@@ -146,7 +157,7 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
         if (ranksCount[i]=2){//found the full house
           for (k in cards){
             if (getRank(k)==i || getRank(k)==j){
-              returnCards.append(k);
+              returnCards.push(k);
             }
           }
           return [6,i*13+j,returnCards,cardRankNames[i]+"s full of "+cardRankNames[j]+"s"];
@@ -163,7 +174,7 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
         let count = 5;
         if (getSuit(j) == i && count > 0){
           count--;
-          flushCards.append(j);
+          flushCards.push(j);
         }
         flushCards.sort((a,b)=>b-a);
         let powerNr = 6, handStr = 0; 
@@ -188,7 +199,7 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
       if (consecCount>3){//straight found
         for (j in cards){
           if(getRank(j) <= i+3 && getRank(j)>= i-1){
-            returnCards.append(j);
+            returnCards.push(j);
           }
         }
         return [4,i,returnCards,cardRankNames[i+3]+" high Straight!"]
@@ -205,14 +216,14 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
       
       for (j in cards){
         if (getRank(j)==i){
-          returnCards.append(j);
+          returnCards.push(j);
         }
       }
       //find kickers
       count = 2;
       for (j in cards){
         if (getRank(j)!=i && count > 0){
-          returnCards.append(j);
+          returnCards.push(j);
           count--;
         }
       }
@@ -230,7 +241,7 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
           for (k in cards){
             if (getRank(k)!=i && getRank(k)!=j){//found the kicker
               let handStr = getRank(k)+i*169+j*13; 
-              returnCards.append(k);
+              returnCards.push(k);
               break;
             }
           }
@@ -238,7 +249,7 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
           while (count>0){
             let temp = cards.pop();
             if (getRank(temp)==i || getRank(temp)==j){
-              returnCards.append(temp);
+              returnCards.push(temp);
               count--;
             }
           }
@@ -253,14 +264,14 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
     if (ranksCount[i]==2){//found a pair
       for (j in cards){
         if (getRank(j)==i){
-          returnCards.append(j);
+          returnCards.push(j);
         }
       }
       count = 3, handStr = 0;
       while (count>0){
         let temp = cards.pop();
         if (getRank(temp)!=i){
-          returnCards.append(temp);
+          returnCards.push(temp);
           handStr+=getRank(temp)**count;
           count--;
         }
@@ -273,7 +284,7 @@ function getHandValue(cards){//cards must be a cards array of the card numbers o
   let highCards = "";
   for (let i=5; i>=0 ; i--){
     temp = cards.pop();
-    returnCards.append(temp);
+    returnCards.push(temp);
     handStr+= getRank(temp)*13**i;
     highCards += cardRanksSymbols[getRank(temp)];
   }
