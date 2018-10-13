@@ -1,0 +1,65 @@
+:root {
+  --white: #fff;
+  --black: #000;
+  --lightgreen: rgb(247, 255, 136);
+  --lightgreenv: rgb(245, 255, 187);
+  --red: #f00;
+}
+
+body{
+  margin: 0;
+}
+
+#wrapper {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: var(--black);
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: repeat(3,1fr);
+  grid-gap: 1em;
+  padding: 1em;
+}
+
+#board {
+  background-color: var(--lightgreen);
+  grid-area: 1 / 1 / span 1 / span 5;
+}
+
+#player1 {
+  grid-area: 2 / 1 / span 1 / span 2;
+}
+#player2 {
+  grid-area: 2 / 4 / span 1 / span 2;
+}
+#player1,
+#player2 {
+  background-color: var(--lightgreenv);
+}
+#player1,
+#player2,
+#board {
+  padding: .5em;
+  border-radius: .5em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#continue {
+  grid-area: 2 / 3 / span 1 / span 1;
+}
+
+.playing-card{
+  text-align: center;
+  font-size: 2em;
+  height: 200px;
+  width: 124px;
+  padding: 4px;
+  box-shadow: 2px 2px 6px var(--black);
+  background-color: var(--white);
+}
+.playing-card > *:nth-child(2){
+  position: relative;
+  top: 0px;
+  width: 32px;
+  height: 32px;
+}
