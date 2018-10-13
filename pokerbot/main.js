@@ -1,4 +1,4 @@
-let cardSuits = ["clubs","spades","hearts","diamonds"],
+let cardSuitsNames = ["clubs","spades","hearts","diamonds"],
   cardDeck = [], //0 to 12 are clubs, 13 to 25 are spades, 26 to 38 are hearts, 39 to 51 are diamonds. the Aces are 12, 25, 38, 51.
   cardSuitsArt = ["svg/card-club.svg","svg/card-spade.svg","svg/card-heart.svg","svg/card-diamond.svg"], 
 cardRanksSymbols = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"], 
@@ -129,7 +129,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   //four of a kind
   //needs to add the four relevant cards to returnCards
   for (let i=12 ; i>=0 ; i--){
-    if (ranksCount[getRank(i)]=4) {//found 4 of a kind
+    if (ranksCount[getRank(i)]==4) {//found 4 of a kind
       
       //determine kicker
       let kickerCardArray = [];
@@ -152,15 +152,15 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   //full house
   //re-uses the ranksCount from the 4 of a kind
   for (let i=12 ; i>-1 ; i--){//looking for 3 of a kind
-    if (ranksCount[i]=3){
+    if (ranksCount[i]==3){
       for (let j=12 ; i>-1 ; i--){//looking for the 2 inside cards
-        if (ranksCount[i]=2){//found the full house
+        if (ranksCount[i]==2){//found the full house
           for (k in cards){
             if (getRank(k)==i || getRank(k)==j){
               returnCards.push(k);
             }
           }
-          return [6,i*13+j,returnCards,cardRankNames[i]+"s full of "+cardRankNames[j]+"s"];
+          return [6,i*13+j,returnCards,cardRankNames[j]+"s full of "+cardRankNames[i]+"s"];
         }
       }
     }
@@ -208,7 +208,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   }
 
   //the last 3 hand types need the cards argument to be sorted in descending order according to rank
-  cards.sort((a,b)=>getRank(b)-getRank(a));
+  cards.sort((a,b)=>getRank(a)-getRank(b));
 
   //three of a kind
   for (let i=12 ; i>=0 ; i--){
@@ -282,11 +282,11 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
 
   //high cards AKA air
   let highCards = "";
-  for (let i=5; i>=0 ; i--){
+  for (let i=4; i>=0 ; i--){
     temp = cards.pop();
     returnCards.push(temp);
     handStr+= getRank(temp)*13**i;
-    highCards += cardRanksSymbols[getRank(temp)];
+    highCards += " "+cardRanksSymbols[getRank(temp)];
   }
   return [0,handStr,returnCards,"high cards: "+highCards];
 
