@@ -2,7 +2,7 @@ let cardSuitsNames = ["Clubs","Spades","Hearts","Diamonds"],
   cardDeck = [], //0 to 12 are clubs, 13 to 25 are spades, 26 to 38 are hearts, 39 to 51 are diamonds. the Aces are 12, 25, 38, 51.
   cardSuitsArt = ["svg/card-club.svg","svg/card-spade.svg","svg/card-heart.svg","svg/card-diamond.svg"], 
 cardRanksSymbols = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"], 
-cardRankNames = ["Deuce","Trey","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King","Ace"];
+cardRankNames = ["Deuce","Trey","Four","Five","Sixe","Seven","Eight","Nine","Ten","Jack","Queen","King","Ace"];
 
 
 function newHand(){
@@ -44,11 +44,15 @@ function newHand(){
   let winningHand = getWinningHand(player1hand,player2hand);
   document.getElementById('player1handtext').innerHTML = player1hand[3];
   document.getElementById('player2handtext').innerHTML = player2hand[3];
+  document.getElementById('player1textspan').classList.remove('green');
+  document.getElementById('player2textspan').classList.remove('green');
   if (winningHand == 2){
+    document.getElementById('player2textspan').classList.add('green');
     for (i of player2hand[2]){
       document.getElementById('card'+i).classList.add('card-won');
     }
   } else if (winningHand){
+    document.getElementById('player1textspan').classList.add('green'); 
     for (i of player1hand[2]){
       document.getElementById('card'+i).classList.add('card-won');
     }
@@ -190,13 +194,13 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
         }
         kickerCardArray.sort((a,b) => getRank(b)-getRank(a));
       }
-      for (j in cards){
+      for (j of cards){
         if (getRank(j) == i){
           returnCards.push(j);
         }
       }
       returnCards.push(kickerCardArray[0]);
-      return [7,getRank(i)*13+getRank(kickerCardArray[0]),returnCards,cardRankNames[getRank(i)]+"s Four of a Kind! " + cardRankNames[getRank(kickerCardArray[0])] +" kicker"];
+      return [7,i*13+getRank(kickerCardArray[0]),returnCards,cardRankNames[getRank(i)]+"s Four of a Kind! " + cardRankNames[getRank(kickerCardArray[0])] +" kicker"];
     }
   }
 
@@ -204,14 +208,16 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   //re-uses the ranksCount from the 4 of a kind
   for (let i=12 ; i>-1 ; i--){//looking for 3 of a kind
     if (ranksCount[i]==3){
-      for (let j=12 ; i>-1 ; i--){//looking for the 2 inside cards
-        if (ranksCount[i]==2){//found the full house
+      console.log(ranksCount[i]+" "+i)
+      for (let j=12 ; j>-1 ; j--){//looking for the 2 inside cards
+        if (ranksCount[j]==2){//found em
+          console.log(ranksCount[j]+" "+j)
           for (k of cards){
             if (getRank(k)==i || getRank(k)==j){
               returnCards.push(k);
             }
           }
-          return [6,i*13+j,returnCards,cardRankNames[j]+"s full of "+cardRankNames[i]+"s"];
+          return [6,i*13+j,returnCards,cardRankNames[i]+"s full of "+cardRankNames[j]+"s"];
         }
       }
     }
@@ -269,6 +275,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   //three of a kind
   for (let i=12 ; i>=0 ; i--){
     if (ranksCount[i]==3){//found 3 of a kind
+      cards.reverse();//reverse sort
       for (j of cards){
         if (getRank(j)==i){
           returnCards.push(j);
@@ -278,6 +285,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
       count = 2;
       for (j of cards){
         if (getRank(j)!=i && count > 0){
+          handStr += getRank(j)*13**count;
           returnCards.push(j);
           count--;
         }
@@ -292,6 +300,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
     if (ranksCount[i]==2){//found a pair
       for (let j=12 ; j>=0 ; j--){
         if (ranksCount[j]==2 && i!=j){//found two pair
+          cards.reverse();//sort ascending
           for (k of cards){
             if (getRank(k)!=i && getRank(k)!=j){//found the kicker
               handStr = getRank(k)+i*169+j*13; 
