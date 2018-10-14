@@ -234,6 +234,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
       }
       flushCards.sort((a,b)=>getRank(b)-getRank(a));
       returnCards = flushCards.slice(0,5);
+      flushCards.reverse();
       count = 5; while (count > 0){
         let temp = flushCards.pop();
         handStr += getRank(temp)*13**count;
