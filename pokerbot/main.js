@@ -79,6 +79,7 @@ function createCard(cardNum){
 }
 
 function getHandValue(cards){//cards must be an array of the card numbers of 5+ cards
+  if (cards.length<5){alert('getHandValue() did not receive an array of length > 4')}
 
   //the first return value will be 9 for royal flush, 8 for straight flush, 7 for four of a kind, etc
   //the second is hand strength used to tiebreak against hands of the same type but which are of lower strength (ie, A hi flush vs 5 hi flush)
@@ -112,20 +113,39 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
           if (suitRanksCount[k] && suitRanksCount[k-1]){//consecutive card found
             consecCount++; 
 
-            //checks to see if there is a possible five high straight flush
-            if(k==1 && suitRanksCount[12] && suitRanksCount[0] && suitRanksCount[1] && suitRanksCount[2] && suitRanksCount[3]){
-              consecCount++;
-              fiveHighStrFlush=true;
-            }
-
             if (consecCount>3){//strflush found
               for (l of cards){
                 if (getRank(l) <= k+3 || getRank(l) >= k-1 || (getRank(l)==12 && fiveHighStrFlush)){
                   returnCards.push(l);
                 }
               }
+              if (fiveHighStrFlush){
+                return ([8,k+3,returnCards,cardRankNames[3]+" high Straight Flush!!"])
+              } else if (k+3 == 12){
+                return ([9,0,returnCards,"Royal Flush!!!"])
+              }
               return ([8,k+3,returnCards,cardRankNames[k+3]+" high Straight Flush!!"])
             }
+
+            //checks to see if there is a possible five high straight flush
+            if(k==1 && suitRanksCount[12] && suitRanksCount[0] && suitRanksCount[1] && suitRanksCount[2] && suitRanksCount[3]){
+              consecCount++;
+              fiveHighStrFlush=true;
+            }
+            if (consecCount>3){//strflush found
+              for (l of cards){
+                if (getRank(l) <= k+3 || getRank(l) >= k-1 || (getRank(l)==12 && fiveHighStrFlush)){
+                  returnCards.push(l);
+                }
+              }
+              if (fiveHighStrFlush){
+                return ([8,k+3,returnCards,cardRankNames[3]+" high Straight Flush!!"])
+              } else if (k+3 == 12){
+                return ([9,0,returnCards,"Royal Flush!!!"])
+              }
+              return ([8,k+3,returnCards,cardRankNames[k+3]+" high Straight Flush!!"])
+            }
+
           } else {consecCount=0}
         }
       }
@@ -193,7 +213,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   }
 
   //straight
-  //still needs to become able to find the 5 hi str flush
+  //should be able to find the 5 hi straight
   for (let i=12 ; i>0 ; i--){
     if(ranksCount[i] && ranksCount[i-1]){//consecutive card found
       consecCount++;
@@ -204,6 +224,17 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
           }
         }
         return [4,i,returnCards,cardRankNames[i+3]+" high Straight!"]
+      }
+
+      if (i == 1 && ranksCount[0] && ranksCount[1] && ranksCount[2] && ranksCount[3] && ranksCount[12]){
+        if(consecCount>2){//5 high straight found
+          for (j of cards){
+            if((getRank(j) <= i+3 && getRank(j) >= i-1) || getRank(j) == 12){
+              returnCards.push(j);
+            }
+          }
+          return [4,0,returnCards,cardRankNames[3]+" high Straight!"]
+        }
       }
     } else {consecCount=0}
   }
@@ -231,7 +262,6 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
       return [3,handStr,returnCards,"Three of a kind, "+cardRankNames[i]+"s"]
     }
   }
-
 
   //two pair
   for (let i=12 ; i>=0 ; i--){
