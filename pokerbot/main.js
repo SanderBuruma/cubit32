@@ -1,8 +1,8 @@
-let cardSuitsNames = ["clubs","spades","hearts","diamonds"],
+let cardSuitsNames = ["Clubs","Spades","Hearts","Diamonds"],
   cardDeck = [], //0 to 12 are clubs, 13 to 25 are spades, 26 to 38 are hearts, 39 to 51 are diamonds. the Aces are 12, 25, 38, 51.
   cardSuitsArt = ["svg/card-club.svg","svg/card-spade.svg","svg/card-heart.svg","svg/card-diamond.svg"], 
 cardRanksSymbols = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"], 
-cardRankNames = ["deuce","trey","four","five","six","seven","eight","nine","ten","jack","queen","king","ace"];
+cardRankNames = ["Deuce","Trey","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King","Ace"];
 
 
 function newHand(){
@@ -85,9 +85,8 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   //the third is an array of the 5 cards that determine hand strength
   //the fourth is the name of the hand value
   let returnCards = [];
-  let count = 0, handStr = 0;
+  let count = 0, handStr = 0, consecCount = 0;
 
-  //straightflush or royal flush WIP
   //still needs to become able to find the 5 hi str flush
   let suitsCount = [0,0,0,0];
   let ranksCount = [0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -98,29 +97,37 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   }
   console.log("suitsCount: "+suitsCount);
   console.log("ranksCount: "+ranksCount);
+
+  //straightflush or royal flush WIP
   count=0;
   for (i of suitsCount){
     if (suitsCount[i] > 4){//more than 4 of a suit, so there is a flush
-      let flushCards = [];
+      let suitRanksCount = [0,0,0,0,0,0,0,0,0,0,0,0,0];
       for (j of cards){
         if (getSuit(j) == i){
-          flushCards.push(j); //fill array
+          suitRanksCount[getRank(j)]++;
         }
-      }
-      flushCards.sort((a,b)=>b-a);//sort descending flushcard array to check whether there are 5 consecutive cards
-      let consecCount = 0; //counting variable to count consecutive cards
-      for (let i=0 ; i<flushCards.length-1 ; i++){
-        if (flushCards[i] > flushCards[i+1]+1){
-          consecCount++;
-          if (consecCount > 3){ //add one to the count at the same time it checks whether there are 5 consecutive cards
-            //straight or royal flush found
-            for (let k=0; k<5 ; k++){returnCards.push(flushCards[k])}
-            if (flushCards[0]%13){
-              return [9,0,returnCards,"Royal Flush"]
+        for (let k=12 ; k>0 ; k--){
+          let fiveHighStrFlush = false;
+          if (suitRanksCount[k] && suitRanksCount[k-1]){//consecutive card found
+            consecCount++; 
+
+            //checks to see if there is a possible five high straight flush
+            if(k==1 && suitRanksCount[12] && suitRanksCount[0] && suitRanksCount[1] && suitRanksCount[2] && suitRanksCount[3]){
+              consecCount++;
+              fiveHighStrFlush=true;
             }
-            return [8,getRank(returnCards[0]),returnCards,"Straight Flush! "+cardRankNames[getRank(returnCards[0])]+" high"];
-          }
-        } else {consecCount=0}
+
+            if (consecCount>3){//strflush found
+              for (l of cards){
+                if (getRank(l) <= k+3 || getRank(l) >= k-1 || (getRank(l)==12 && fiveHighStrFlush)){
+                  returnCards.push(l);
+                }
+              }
+              return ([8,k+3,returnCards,cardRankNames[k+3]+" high Straight Flush!!"])
+            }
+          } else {consecCount=0}
+        }
       }
     }
     count++;
@@ -155,7 +162,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
     if (ranksCount[i]==3){
       for (let j=12 ; i>-1 ; i--){//looking for the 2 inside cards
         if (ranksCount[i]==2){//found the full house
-          for (k in cards){
+          for (k of cards){
             if (getRank(k)==i || getRank(k)==j){
               returnCards.push(k);
             }
@@ -168,37 +175,31 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
 
   //flush
   for (i in suitsCount){
-    if (suitsCount[i] > 4){
+    if (suitsCount[i] > 4){//found a flush
       let flushCards = [];
-      for (j in cards){
-        let count = 5;
-        if (getSuit(j) == i && count > 0){
-          count--;
+      for (j of cards){
+        if(getSuit(j)==i){
           flushCards.push(j);
         }
-        flushCards.sort((a,b)=>b-a);
-        let powerNr = 6, handStr = 0; 
-        count = 5;
-        for (i in flushCards){
-          if (count > 0){
-            handStr += Math.pow(getRank(i),powerNr); //this power calculation is required to prevent a JQs high flush from beating a K2s high flush
-            powerNr--; count--;
-          }
-        }
-        return [5,handStr,flushCards," Flush"]
       }
+      flushCards.sort((a,b)=>getRank(b)-getRank(a));
+      returnCards = flushCards.slice(0,5);
+      count = 5; while (count > 0){
+        let temp = flushCards.pop();
+        handStr += getRank(temp)*13**count;
+        count--;}
+      return [5,handStr,returnCards,cardRankNames[getRank(returnCards[0])]+" high Flush"];
     }
   }
 
   //straight
   //still needs to become able to find the 5 hi str flush
-  let consecCount = 0;
   for (let i=12 ; i>0 ; i--){
-    if (ranksCount[i] && ranksCount[i-1]){//consecutive card found
+    if(ranksCount[i] && ranksCount[i-1]){//consecutive card found
       consecCount++;
-      if (consecCount>3){//straight found
-        for (j in cards){
-          if(getRank(j) <= i+3 && getRank(j)>= i-1){
+      if(consecCount>3){//straight found
+        for (j of cards){
+          if(getRank(j) <= i+3 && getRank(j) >= i-1){
             returnCards.push(j);
           }
         }
@@ -213,15 +214,14 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   //three of a kind
   for (let i=12 ; i>=0 ; i--){
     if (ranksCount[i]==3){//found 3 of a kind
-      
-      for (j in cards){
+      for (j of cards){
         if (getRank(j)==i){
           returnCards.push(j);
         }
       }
       //find kickers
       count = 2;
-      for (j in cards){
+      for (j of cards){
         if (getRank(j)!=i && count > 0){
           returnCards.push(j);
           count--;
@@ -238,9 +238,9 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
     if (ranksCount[i]==2){//found a pair
       for (let j=12 ; j>=0 ; j--){
         if (ranksCount[j]==2 && i!=j){//found two pair
-          for (k in cards){
+          for (k of cards){
             if (getRank(k)!=i && getRank(k)!=j){//found the kicker
-              let handStr = getRank(k)+i*169+j*13; 
+              handStr = getRank(k)+i*169+j*13; 
               returnCards.push(k);
               break;
             }
@@ -253,7 +253,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
               count--;
             }
           }
-          return [2,handStr,returnCards,cardRankNames[i]+"s and "+cardRankNames[j]+"s"];
+          return [2,handStr,returnCards,"Two pair, "+cardRankNames[i]+"s and "+cardRankNames[j]+"s"];
         }
       }
     }
@@ -262,12 +262,13 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   //one pair
   for (let i=12 ; i>=0 ; i--){
     if (ranksCount[i]==2){//found a pair
-      for (j in cards){
+      for (j of cards){
         if (getRank(j)==i){
           returnCards.push(j);
         }
       }
       count = 3, handStr = 0;
+      handStr += i*13**4;
       while (count>0){
         let temp = cards.pop();
         if (getRank(temp)!=i){
@@ -276,7 +277,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
           count--;
         }
       }
-      return [1,handStr,returnCards,"one pair, "+cardRankNames[i]+"s"]
+      return [1,handStr,returnCards,"One pair, "+cardRankNames[i]+"s"]
     }
   }
 
@@ -288,7 +289,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
     handStr+= getRank(temp)*13**i;
     highCards += " "+cardRanksSymbols[getRank(temp)];
   }
-  return [0,handStr,returnCards,"high cards: "+highCards];
+  return [0,handStr,returnCards,"High cards: "+highCards];
 
 }
 
