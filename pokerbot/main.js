@@ -10,7 +10,7 @@ function newHand(){
   //clear board
   while (document.getElementsByClassName('playing-card').length > 0){
     let temp = document.getElementsByClassName('playing-card')[0];
-    destroyElelement( temp )
+    destroyElelement(temp)
   }
 
   //reshuffle deck
@@ -27,13 +27,34 @@ function newHand(){
     document.getElementById('board').append(createCard(cardDeck[i]));
   }
 
-  let tempDeck = [];
-  for (let i=2 ; i<9 ; i++){
-    tempDeck.push(cardDeck[i]);
-  }
-  console.log(getHandValue(tempDeck));
-
   //display final hand strength for both players
+  let player1hand = [];
+  for (let i = 0; i<2 ; i++){
+    player1hand.push(cardDeck[i]);
+  }
+  for (let i = 4; i<9 ; i++){
+    player1hand.push(cardDeck[i]);
+  }
+  console.log(player1hand)
+  player1hand = getHandValue(player1hand);
+  let player2hand = cardDeck.slice(2,9);
+  console.log(player2hand)
+  player2hand = getHandValue(player2hand);
+
+  let winningHand = getWinningHand(player1hand,player2hand);
+  document.getElementById('player1handtext').innerHTML = player1hand[3];
+  document.getElementById('player2handtext').innerHTML = player2hand[3];
+  if (winningHand == 2){
+    for (i of player2hand[2]){
+      document.getElementById('card'+i).classList.add('card-won');
+    }
+  } else if (winningHand){
+    for (i of player1hand[2]){
+      document.getElementById('card'+i).classList.add('card-won');
+    }
+  } else {//draw
+
+  }
 }
 
 function destroyElelement(elem){
@@ -46,8 +67,8 @@ function randomDeck(){
     tempDeck.push(i);
   }
   while (tempDeck.length){
-    let randoVar = Math.floor(Math.random()*tempDeck.length);
-    returnDeck.push(tempDeck.splice(randoVar,1)[0]);
+    let randomVar = Math.floor(Math.random()*tempDeck.length);
+    returnDeck.push(tempDeck.splice(randomVar,1)[0]);
   }
   return returnDeck;
 }
@@ -79,7 +100,10 @@ function createCard(cardNum){
 }
 
 function getHandValue(cards){//cards must be an array of the card numbers of 5+ cards
-  if (cards.length<5){alert('getHandValue() did not receive an array of length > 4')}
+  if (cards.length<5){
+    console.log('getHandValue() did not receive an array of length > 4')
+    console.log(cards);
+  }
 
   //the first return value will be 9 for royal flush, 8 for straight flush, 7 for four of a kind, etc
   //the second is hand strength used to tiebreak against hands of the same type but which are of lower strength (ie, A hi flush vs 5 hi flush)
@@ -321,6 +345,22 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
   }
   return [0,handStr,returnCards,"High cards: "+highCards];
 
+}
+
+function getWinningHand(hand1,hand2){
+  if (hand1[0] > hand2[0]){
+      return 1;
+  } else if (hand1[0] < hand2[0]){
+      return 2;
+  } else {
+    if (hand1[1] > hand2[1]){
+      return 1;
+    } else if (hand1[1] < hand2[1]){
+      return 2;
+    } else {
+      return 0;
+    }
+  }
 }
 
 function getSuit(card){

@@ -1,12 +1,24 @@
 :root {
   --white: #fff;
   --black: #000;
-  --lightgreen: rgb(247, 255, 136);
-  --lightgreenv: rgb(245, 255, 187);
+  --lightstyle: rgb(247, 255, 136);
+  --lightstylev: rgb(245, 255, 187);
+  --darkstyle: #880;
   --red: #f00;
+  --playingcardheight: 200px;
 }
 
-body{
+body {
+  margin: 0px;
+}
+
+button {
+  background-color: var(--lightstyle);
+  color: var(--black);
+  border: 2px solid var(--darkstyle);
+}
+h6 {
+  font-size: 2em;
   margin: 0;
 }
 
@@ -21,45 +33,132 @@ body{
 }
 
 #board {
-  background-color: var(--lightgreen);
+  background-color: var(--lightstyle);
   grid-area: 1 / 1 / span 1 / span 5;
 }
-
+#info {
+  grid-area: 2 / 1 / span 1 / span 5;
+}
 #player1 {
-  grid-area: 2 / 1 / span 1 / span 2;
+  grid-area: 3 / 1 / span 1 / span 2;
 }
 #player2 {
-  grid-area: 2 / 4 / span 1 / span 2;
+  grid-area: 3 / 4 / span 1 / span 2;
 }
 #player1,
-#player2 {
-  background-color: var(--lightgreenv);
+#player2,
+#info {
+  background-color: var(--lightstylev);
 }
 #player1,
 #player2,
 #board {
+  border: 2px solid var(--darkstyle);
   padding: .5em;
   border-radius: .5em;
   display: flex;
   justify-content: center;
+  justify-items: center;
+  text-justify: center;
   flex-wrap: wrap;
 }
+#info {
+  border: 2px solid var(--darkstyle);
+  padding: .5em;
+  border-radius: .5em;
+  align-content: middle;
+}
+#player1handtext,
+#player2handtext{
+  font-size: 2em;
+  margin: 0;
+}
 #continue {
-  grid-area: 2 / 3 / span 1 / span 1;
+  grid-area: 3 / 3 / span 1 / span 1;
+  font-size: 2em;
 }
 
-.playing-card{
+.playing-card {
   text-align: center;
   font-size: 2em;
-  height: 200px;
+  height: var(--playingcardheight);
   width: 124px;
   padding: 4px;
   box-shadow: 2px 2px 6px var(--black);
-  background-color: var(--white);
+  background-color: rgb(151, 151, 151);
+  margin: .2em;
 }
 .playing-card > *:nth-child(2){
   position: relative;
   top: 0px;
   width: 32px;
   height: 32px;
+}
+.avatar {
+  width: var(--playingcardheight);
+  height: var(--playingcardheight);
+  box-shadow: 2px 2px 6px var(--black);
+  margin-right: 2px;
+}
+.card-won {
+  background-color: var(--white);
+}
+.green {
+  color: #080;
+}
+
+@media screen and (max-width: 1000px){
+  :root{
+    --playingcardheight: 150px;
+  }
+  .playing-card{
+    font-size: 1.5em;
+    width: 93px;
+    padding: 2px;
+  }
+  .playing-card > *:nth-child(2){
+    top: 0px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  :root{
+    --playingcardheight: 100px;
+  }
+  .playing-card{
+    font-size: 1em;
+    width: 62px;
+  }
+  .playing-card > *:nth-child(2){
+    top: 0px;
+    width: 16px;
+    height: 16px;
+  }
+  #player1,
+  #player2,
+  #board,
+  #info {
+    padding: 0px;
+  }
+}
+
+@media screen and (max-width: 490px){
+  :root{
+    --playingcardheight: 70px;
+  }
+  .playing-card{
+    font-size: .7em;
+    width: 31px;
+  }
+  .playing-card > *:nth-child(2){
+    top: 0px;
+    width: 8px;
+    height: 8px;
+    text-shadow: 2px 2px 6px var(--black);
+  }
+  #continue {
+    font-size: 1em;
+  }
 }
