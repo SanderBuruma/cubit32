@@ -143,7 +143,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
 
             if (consecCount>3){//strflush found
               for (l of cards){
-                if (getRank(l) <= k+3 || getRank(l) >= k-1 || (getRank(l)==12 && fiveHighStrFlush)){
+                if ((getRank(l) <= k+3 || getRank(l) >= k-1 || (getRank(l)==12 && fiveHighStrFlush)) && getSuit(l) == i) {
                   returnCards.push(l);
                 }
               }
@@ -210,7 +210,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
     if (ranksCount[i]==3){
       console.log(ranksCount[i]+" "+i)
       for (let j=12 ; j>-1 ; j--){//looking for the 2 inside cards
-        if (ranksCount[j]==2){//found em
+        if (ranksCount[j]>=2){//found em
           console.log(ranksCount[j]+" "+j)
           for (k of cards){
             if (getRank(k)==i || getRank(k)==j){
@@ -285,7 +285,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
       //find kickers
       count = 2;
       for (j of cards){
-        if (getRank(j)!=i && count > 0){
+        if (getRank(j)!==i && count>0){
           handStr += getRank(j)*13**count;
           returnCards.push(j);
           count--;
