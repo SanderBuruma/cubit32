@@ -27,7 +27,7 @@ h6 {
   color: var(--black);
   display: grid;
   grid-template-columns: repeat(5,1fr);
-  grid-template-rows: repeat(3,1fr);
+  grid-template-rows: auto auto auto;
   grid-gap: 1em;
   padding: 1em;
 }
@@ -38,6 +38,7 @@ h6 {
 }
 #info {
   grid-area: 2 / 1 / span 1 / span 5;
+  margin-left: .5em;
 }
 #player1 {
   grid-area: 3 / 1 / span 1 / span 2;
@@ -70,7 +71,7 @@ h6 {
 }
 #player1handtext,
 #player2handtext{
-  font-size: 2em;
+  font-size: 1em;
   margin: 0;
 }
 #continue {
@@ -109,7 +110,7 @@ h6 {
   color: #080;
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1340px){
   :root{
     --playingcardheight: 150px;
   }
@@ -125,7 +126,7 @@ h6 {
   }
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 1020px){
   :root{
     --playingcardheight: 100px;
   }
@@ -146,7 +147,7 @@ h6 {
   }
 }
 
-@media screen and (max-width: 490px){
+@media screen and (max-width: 690px){
   :root{
     --playingcardheight: 70px;
   }

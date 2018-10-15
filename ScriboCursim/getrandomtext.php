@@ -4,7 +4,7 @@
 <body>
 
 <?php
-$con = mysqli_connect('localhost','readonly','password','scribo_cursim');
+$con = mysqli_connect('localhost','readonly','1234password5678','scribo_cursim');
 if (!$con) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL."<br>";
     echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL ."<br>";

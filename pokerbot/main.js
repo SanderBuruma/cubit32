@@ -1,6 +1,6 @@
 let cardSuitsNames = ["Clubs","Spades","Hearts","Diamonds"],
-  cardDeck = [], //0 to 12 are clubs, 13 to 25 are spades, 26 to 38 are hearts, 39 to 51 are diamonds. the Aces are 12, 25, 38, 51.
-  cardSuitsArt = ["svg/card-club.svg","svg/card-spade.svg","svg/card-heart.svg","svg/card-diamond.svg"], 
+cardDeck = [], //0 to 12 are clubs, 13 to 25 are spades, 26 to 38 are hearts, 39 to 51 are diamonds. the Aces are 12, 25, 38, 51.
+cardSuitsArt = ["svg/card-club.svg","svg/card-spade.svg","svg/card-heart.svg","svg/card-diamond.svg"], 
 cardRanksSymbols = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"], 
 cardRankNames = ["Deuce","Trey","Four","Five","Sixe","Seven","Eight","Nine","Ten","Jack","Queen","King","Ace"];
 
@@ -210,7 +210,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
     if (ranksCount[i]==3){
       console.log(ranksCount[i]+" "+i)
       for (let j=12 ; j>-1 ; j--){//looking for the 2 inside cards
-        if (ranksCount[j]>=2){//found em
+        if (ranksCount[j]>=2 && j!=i){//found em
           console.log(ranksCount[j]+" "+j)
           for (k of cards){
             if (getRank(k)==i || getRank(k)==j){
