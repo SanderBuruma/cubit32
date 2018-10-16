@@ -4,14 +4,7 @@
 <body>
 
 <?php
-$con = mysqli_connect('localhost','readonly','1234password5678','scribo_cursim');
-if (!$con) {
-    echo "Error: Unable to connect to MySQL." . PHP_EOL."<br>";
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL ."<br>";
-    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL."<br>";
-    die('Could not connect: ' . mysqli_error($con));
-}
-
+require('../../hidden/con_readonly.php');
 mysqli_select_db($con,"the precise content of this line should not be important at all");
 $sql="SELECT id FROM texts";
 $result = mysqli_query($con,$sql);
