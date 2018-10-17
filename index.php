@@ -61,7 +61,7 @@
         <p>HTML</p>
         <p>CSS</p>
         <p>PHP</p>
-        <p>Javascript</p>
+        <p><a src="../pokerbot/">Javascript</a></p>
         <p>SQL</p>
         <p>Regex</p>
         <p class="easteregg1">Kerbal OS</p>
@@ -113,13 +113,13 @@
         <div>
           <img src="svg/space-shuttle-solid.svg"/>
           <div>
-            <p></p><p>HubbleHack: neem de macht over de hubble telescoop om de buitenaardse steden van Alpha Centauri III te bekijken.</p><a href="#">Bezoek!</a>
+            <p></p><p>HubbleHack: neem de macht over de hubble telescoop om de buitenaardse steden van Alpha Centauri III te bekijken.</p><a href="#projects">Bezoek!</a>
           </div>
         </div>
         <div>
           <img src="svg/robot-solid.svg"/>
           <div>
-            <p></p><p>Elise Chatbot: een chatbot die niet van een persoon te onderscheiden is. Ze leeft haar eigen gesimuleerde leven en heeft een buitengewoon aangename personaliteit.</p><a href="#">Bezoek!</a>
+            <p></p><p>Elise Chatbot: een chatbot die niet van een persoon te onderscheiden is. Ze leeft haar eigen gesimuleerde leven en heeft een buitengewoon aangename personaliteit.</p><a href="#projects">Bezoek!</a>
           </div>
         </div>
       </div>
