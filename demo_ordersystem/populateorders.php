@@ -1,6 +1,6 @@
 <?php
 //populate table
-$conn = mysqli_connect('localhost','root','w34#9^lgBJKV','demo_ordersystem');
+$con = mysqli_connect('localhost','root','w34#9^lgBJKV','demo_ordersystem');
 
 $sql="SELECT customerID FROM customers";
 $result = mysqli_query($con,$sql);
@@ -15,4 +15,4 @@ for ($i=0 ; $i<=1e4 ; $i++){
   $sql = "INSERT INTO `orders` (`orderdate`, `status`, `comments`, `customerID`, `shippedDate`, `requiredDate`) VALUES ('2018-10-19', 'received', '', '2299', '2018-10-20', '2018-12-20')";
 }
 
-mysqli_close($conn);
+mysqli_close($con);

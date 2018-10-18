@@ -12,11 +12,8 @@ $idarray = array();
 while($row = mysqli_fetch_array($result)) {
     array_push($idarray, $row['id']);
 }
-// print_r($idarray).'<br>';
-// print_r($result).'<br>';
 $sql="SELECT * FROM texts where id = ".($idarray[array_rand($idarray)]);
 $result = mysqli_query($con,$sql);
-// print_r($result).'<br>';
 while($row = mysqli_fetch_array($result)) {
     echo '%SPLIT%'.$row['id'].'%SPLIT%';
     echo $row['author'].'%SPLIT%';

@@ -1,11 +1,12 @@
 <?php
 
-require('informationarrays.php');
+require('zzzinformationarrays.php');
+require('../component/con_db.php');
 
 //populate table
-$conn = mysqli_connect('localhost','root','w34#9^lgBJKV','demo_school');
-for ($i=0 ; $i<=1e3 ; $i++){
-  if (random_int(0,1) == 1){
+$con = mysqli_connect('localhost','root','w34#9^lgBJKV','demo_school');
+for ($i=0 ; $i<1e2 ; $i++){
+  if (random_int(0,1)){
     //jongen
     $voornaam = $fNamesMaleArr[array_rand($fNamesMaleArr)];
     $geslacht = 'm';
@@ -15,12 +16,21 @@ for ($i=0 ; $i<=1e3 ; $i++){
     $geslacht = 'v';
   }
   $achternaam = $achterNamen[array_rand($achterNamen)];
-  $klasID = floor(i/25)+1;
+  $klasID = ($i%41+1);
+
   $sql = "SELECT schooljaar FROM `klassen` WHERE klasID = $klasID";
-  $schooljaar = mysqli_query($conn,$sql);
+  $result = mysqli_query($con,$sql);
+  $idarray = array();
+  while($row = mysqli_fetch_array($result)) {
+      array_push($idarray, $row['schooljaar']);
+  }
+  $schooljaar = $idarray[0];
+
   $leeftijd = $schooljaar + random_int(12,14);
   $sql = "INSERT INTO `studenten` (`studentID`, `voornaam`, `achternaam`, `leeftijd`, `geslacht`, `notities`, `klasID`) VALUES (NULL, '$voornaam', '$achternaam', '$leeftijd', '$geslacht', '', '$klasID')";
-  $result = mysqli_query($conn,$sql);
+  $temp = escapeshellcmd($sql);
+  
+  $result = mysqli_query($con,$sql);
 }
 
-mysqli_close($conn);
+mysqli_close($con);

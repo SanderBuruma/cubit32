@@ -8,7 +8,7 @@ $postCodesArr = ['00000','03612','07788','11202','14021','16232','29999','35050'
 $streetNamesArr = ['Third','First','Fourth','Park','Fifth','Main','Sixth','Oak','Seventh','Pine','Maple','Cedar','Eight','Elm','View','Washington','Ninth','Lake','Hill','Dogwood','Maple','Pine','Reindeer','StJoan','StJoseph','Park','Train','Truck','Keyboard','Javascript','Water','Court'];
 
 //populate table
-$conn = mysqli_connect('localhost','root','w34#9^lgBJKV','demo_ordersystem');
+$con = mysqli_connect('localhost','root','w34#9^lgBJKV','demo_ordersystem');
 for ($i=0; $i<=1e3 ; $i++){
   $fname = $fNamesArr[array_rand($fNamesArr)];
   $lname = $lNamesArr[array_rand($lNamesArr)];
@@ -26,4 +26,4 @@ for ($i=0; $i<=1e3 ; $i++){
   $result = mysqli_query($conn,$sql);
 }
 
-mysqli_close($conn);
+mysqli_close($con);

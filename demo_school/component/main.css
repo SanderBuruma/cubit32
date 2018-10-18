@@ -1,0 +1,55 @@
+:root {
+  --main-color-light: rgb(215, 216, 255);
+  --main-color-dark: rgb(117, 102, 255);
+}
+
+body {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  text-justify: center;
+  flex-wrap: wrap;
+  height: auto;
+}
+nav {
+  text-align: center;
+  background-color: var(--main-color-light);
+  border-bottom: 2px var(--main-color-dark) solid;
+  border-radius: 4px;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  margin: 0 auto;
+}
+ul {
+  width: 100%;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5,auto);
+  padding: 0;
+}
+ul > li {
+  position: relative;
+  left: 0;
+  margin: 0 .5em;
+}
+ul > li > a {
+  padding: 2px;
+  text-decoration: none;
+  color: var(--main-color-dark);
+  font-size: 16px;
+  border: dashed 2px var(--main-color-light);
+  transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out;
+  border-radius: 8px;
+}
+ul > li > a:hover,
+ul > li > a.active {
+  border: dashed 2px var(--main-color-dark);
+  background-color: white;
+}
+ul > li > a:any-link {
+  text-decoration: none;
+  color: var(--main-color-dark);
+  font-size: 16px;
+}
