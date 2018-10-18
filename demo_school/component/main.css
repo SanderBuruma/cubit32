@@ -1,6 +1,6 @@
 :root {
   --main-color-light: rgb(215, 216, 255);
-  --main-color-dark: rgb(117, 102, 255);
+  --main-color-dark: rgb(104, 87, 255);
 }
 
 body {
@@ -52,4 +52,19 @@ ul > li > a:any-link {
   text-decoration: none;
   color: var(--main-color-dark);
   font-size: 16px;
+}
+
+form {
+  text-align: left;
+  padding: 0 6px;
+  display: block;
+  position: relative;
+  top: 100px;
+  color: var(--main-color-dark);
+  background-color: var(--main-color-light);
+  border: 2px solid var(--main-color-dark);
+  border-radius: 8px;
+}
+form > * {
+  left: 0;
 }
