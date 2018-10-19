@@ -5,7 +5,7 @@ require('../component/con_db.php');
 
 //populate table
 $con = mysqli_connect('localhost','root','w34#9^lgBJKV','demo_school');
-for ($i=0 ; $i<1e2 ; $i++){
+for ($i=0 ; $i<(41*4) ; $i++){
   if (random_int(0,1)){
     //jongen
     $voornaam = $fNamesMaleArr[array_rand($fNamesMaleArr)];

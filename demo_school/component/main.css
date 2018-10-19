@@ -1,9 +1,9 @@
-:root {
+:root{
   --main-color-light: rgb(215, 216, 255);
   --main-color-dark: rgb(104, 87, 255);
 }
 
-body {
+body{
   display: flex;
   text-align: center;
   justify-content: center;
@@ -12,7 +12,7 @@ body {
   flex-wrap: wrap;
   height: auto;
 }
-nav {
+nav{
   text-align: center;
   background-color: var(--main-color-light);
   border-bottom: 2px var(--main-color-dark) solid;
@@ -22,19 +22,21 @@ nav {
   width: 100%;
   margin: 0 auto;
 }
-ul {
+ul{
   width: 100%;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(5,auto);
   padding: 0;
 }
-ul > li {
+ul > li{
   position: relative;
+  width: 0px;
+  height: 40px;
   left: 0;
   margin: 0 .5em;
 }
-ul > li > a {
+ul > li > a{
   padding: 2px;
   text-decoration: none;
   color: var(--main-color-dark);
@@ -44,17 +46,20 @@ ul > li > a {
   border-radius: 8px;
 }
 ul > li > a:hover,
-ul > li > a.active {
+ul > li > a.active{
   border: dashed 2px var(--main-color-dark);
   background-color: white;
 }
-ul > li > a:any-link {
+ul > li > a:any-link{
   text-decoration: none;
   color: var(--main-color-dark);
   font-size: 16px;
 }
+ul > li > ul > li{
 
-form {
+}
+
+form{
   text-align: left;
   padding: 0 6px;
   display: block;
@@ -65,6 +70,19 @@ form {
   border: 2px solid var(--main-color-dark);
   border-radius: 8px;
 }
-form > * {
+form > *{
   left: 0;
+}
+.warning{
+  background-color: rgb(153, 0, 0);
+  color: rgb(255, 103, 103);
+}
+.success{
+  background-color: rgb(18, 153, 0);
+  color: rgb(108, 255, 103);
+}
+.success,
+.warning{
+  border-radius: 4px;
+  text-align: center
 }
