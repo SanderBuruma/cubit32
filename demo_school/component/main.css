@@ -20,23 +20,23 @@ nav{
   top: 0;
   position: fixed;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
 }
-ul{
+nav > ul{
   width: 100%;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(5,auto);
   padding: 0;
 }
-ul > li{
+nav > ul > li{
   position: relative;
   width: 0px;
   height: 40px;
   left: 0;
   margin: 0 .5em;
 }
-ul > li > a{
+nav > ul > li > a{
   padding: 2px;
   text-decoration: none;
   color: var(--main-color-dark);
@@ -45,18 +45,28 @@ ul > li > a{
   transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out;
   border-radius: 8px;
 }
-ul > li > a:hover,
-ul > li > a.active{
+nav > ul > li > a:hover,
+nav > ul > li > a.active{
   border: dashed 2px var(--main-color-dark);
   background-color: white;
 }
-ul > li > a:any-link{
+nav > ul > li > a:any-link{
   text-decoration: none;
   color: var(--main-color-dark);
   font-size: 16px;
 }
-ul > li > ul > li{
-
+nav > ul > li > ul{
+  padding-left: 0;
+}
+nav > ul > li > ul > li{
+  display: inherit;
+  list-style: none;
+  padding: 8px;
+  background-color: var(--main-color-light);
+  color: var(--main-color-dark);
+  border: var(--main-color-dark) solid 2px;
+}
+nav > ul > li > ul > li > a{
 }
 
 form{

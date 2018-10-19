@@ -3,10 +3,10 @@
     <li>
       <a href="./" <?php if ($_SESSION['page'] == "home"){echo 'class="active"';} ?>>Home</a>
       <ul>
-        <li>First</li>
-        <li>Second</li>
-        <li>Third</li>
-        <li>Fourth</li>
+        <li><a>First</a></li>
+        <li><a>Second</a></li>
+        <li><a>Third</a></li>
+        <li><a>Fourth</a></li>
       </ul>
     </li>
     <li>
