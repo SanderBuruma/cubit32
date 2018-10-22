@@ -41,7 +41,7 @@ if (isset($_POST['submit'])){
 }
 ?>
 
-<form action="inloggen.php" method="POST">
+<form id="inloggen" action="inloggen.php" method="POST">
   <h3>Inloggen</h3>
   <p class="success"><?php echo $_SESSION['success']; $_SESSION['success'] = '' ?></p>
   <p class="warning"><?php echo $_SESSION['warning']; $_SESSION['warning'] = '' ?></p>

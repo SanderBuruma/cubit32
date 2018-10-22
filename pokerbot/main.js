@@ -379,3 +379,4 @@ function getSuit(card){
 function getRank(card){
   return card%13;
 }
+

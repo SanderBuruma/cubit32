@@ -5,8 +5,8 @@ require('component/navbar.php');
 
 if (isset($_POST['submit'])){
 
-  // require('component/con_db.php');
-  $con = mysqli_connect('localhost','root','w34#9^lgBJKV','ultramarkt');
+  require('component/con_db.php');
+  // $con = mysqli_connect('localhost','root','w34#9^lgBJKV','ultramarkt');
 
   $password = $_POST['password'];
   $username = $_POST['username'];
@@ -40,22 +40,26 @@ if (isset($_POST['submit'])){
 
   } else {
 
-    $passwordMD5 = md5($password);
+    $_SESSION['success'] = "";
 
     $sessionID = "";
     $hexchars = array("a","b","c","d","e","f","0","1","2","3","4","5","6","7","8","9");
-    for ($i=0 ; $i<60 ; $i++){$sessionID .= array_rand($hexchars);}
+    for ($i=0 ; $i<60 ; $i++){$sessionID .= $hexchars[array_rand($hexchars)];}
+    $passwordSalt = '';
+    for ($i=0 ; $i<16 ; $i++){$passwordSalt .= $hexchars[array_rand($hexchars)];}
+    $passwordMD5 = md5($password.$passwordSalt);
 
-    $sql = "INSERT INTO `users` (`userID`, `username`, `email`, `passwordMD5`, `sessionID`) VALUES (NULL, '$username', '$email', '$passwordMD5', '$sessionID')";
+    $sql = "INSERT INTO `users` (`userID`, `username`, `email`, `passwordMD5`, `sessionID`, `passwordSalt`) VALUES (NULL, '$username', '$email', '$passwordMD5', '$sessionID','$passwordSalt')";
+    echo $sql;
     mysqli_query($con,$sql);
-    $_SESSION['success'] = "$username geregistreerd!";
-    // $_SESSION['sessionID'] = $sessionID;
-
+    $_SESSION['success'] = " $username geregistreerd!";
+    $_SESSION['sessionID'] = $sessionID;
+    
   }
 }
 ?>
 
-<form action="registreren.php" method="POST">
+<form id="registreer" action="registreren.php" method="POST">
   <h3>Registratie</h3>
   <p class="success"><?php echo $_SESSION['success']; $_SESSION['success'] = '' ?></p>
   <p class="warning"><?php echo $_SESSION['warning']; $_SESSION['warning'] = '' ?></p>
