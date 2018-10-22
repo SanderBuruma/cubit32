@@ -47,7 +47,7 @@ if (isset($_POST['submit'])){
   <input type="text" name="voornaam" placeholder="Voornaam"><br/>
   <input type="text" name="achternaam" placeholder="Achternaam"><br/>
   <input type="number" name="leeftijd" value="" placeholder="Leeftijd"><br/>
-  <input type="radio" name="geslacht" value="m" checked>M / V
+  <input type="radio" name="geslacht" value="m" checked> M / V
   <input type="radio" name="geslacht" value="v"><br/>
   <input tyoe="number" name="klasID" placeholder="KlasID"><br/>
   <input tyoe="textarea" name="notities" placeholder="notities"><br/>

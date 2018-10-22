@@ -54,7 +54,7 @@ if (isset($_POST['submit'])){
   <input type="text" name="stad" placeholder="Stad" required><br/>
   <input type="text" name="email" placeholder="Email" required><br/>
   <input type="number" name="leeftijd" placeholder="Leeftijd" required><br/>
-  <input type="radio" name="geslacht" value="m" checked>M / V
+  <input type="radio" name="geslacht" value="m" checked> M / V
   <input type="radio" name="geslacht" value="v"><br/>
   <input type="textarea" name="notities" placeholder="notities"><br/>
   <button type="submit" name='submit'>Verstuur</button>

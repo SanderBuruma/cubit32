@@ -2,7 +2,11 @@
   --main-color-light: rgb(215, 216, 255);
   --main-color-dark: rgb(104, 87, 255);
 }
-*{margin:0;padding:0;position:relative;}
+*{
+  margin:0;padding:0;
+  position:relative;
+  font-family: monospace, arial;
+}
 body{
   display: flex;
   text-align: center;
@@ -12,6 +16,63 @@ body{
   flex-wrap: wrap;
   height: auto;
 }
+nav{
+  text-align: center;
+  background-color: var(--main-color-light);
+  border-bottom: 2px var(--main-color-dark) solid;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  margin: 0;
+}
+nav > ul{
+  width: 100%;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5,auto);
+  padding: 0;
+}
+nav > ul > li{
+  position: relative;
+  width: 0px;
+  height: 20px;
+  left: 0;
+  margin: 0 .5em;
+}
+nav > ul > li > a{
+  padding: 2px;
+  text-decoration: none;
+  color: var(--main-color-dark);
+  font-size: 16px;
+  border: dashed 2px var(--main-color-light);
+  transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out;
+  border-radius: 8px;
+}
+nav > ul > li > a:hover,
+nav > ul > li > a.active{
+  border: dashed 2px var(--main-color-dark);
+  background-color: white;
+}
+nav > ul > li > a:any-link{
+  text-decoration: none;
+  color: var(--main-color-dark);
+  font-size: 16px;
+}
+nav > ul > li > ul{
+  padding-left: 0;
+}
+nav > ul > li > ul > li{
+  width: 100px  ;
+  display: inherit;
+  list-style: none;
+  padding: 8px;
+  background-color: var(--main-color-light);
+  color: var(--main-color-dark);
+  border: var(--main-color-dark) solid 2px;
+}
+nav > ul > li > ul > li > a{
+}
+
 form{
   text-align: left;
   padding: 0 6px;
