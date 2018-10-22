@@ -1,25 +1,17 @@
-<nav>
-  <ul>
-    <li>
+  <div>
+    <div>
       <a href="./" <?php if ($_SESSION['page'] == "home"){echo 'class="active"';} ?>>Home</a>
-      <ul>
-        <li><a>First</a></li>
-        <li><a>Second</a></li>
-        <li><a>Third</a></li>
-        <li><a>Fourth</a></li>
-      </ul>
-    </li>
-    <li>
+    </div>
+    <div>
       <a href="./studenten.php" <?php if ($_SESSION['page'] == "studenten"){echo 'class="active"';} ?>>Studenten</a>
-    </li>
-    <li>
+    </div>
+    <div>
       <a href="./docenten.php" <?php if ($_SESSION['page'] == "docenten"){echo 'class="active"';} ?>>Docenten</a>
-    </li>
-    <li>
+    </div>
+    <div>
       <a href="./niveaus.php" <?php if ($_SESSION['page'] == "niveaus"){echo 'class="active"';} ?>>Niveaus</a>
-    </li>
-    <li>
+    </div>
+    <div>
       <a href="./vakken.php" <?php if ($_SESSION['page'] == "vakken"){echo 'class="active"';} ?>>Vakken</a>
-    </li>
-  </ul>
-</nav>
+    </div>
+  </div>

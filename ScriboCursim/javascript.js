@@ -54,7 +54,7 @@ function wpmCounterChange(){
 function mainMenuPractice(a){//trigger when >practice< is clicked
     xmlhttp.open("GET","getrandomtext.php");
     xmlhttp.send();
-    wpmInterval = setInterval(wpmCounterChange,333);
+    wpmInterval = setInterval(wpmCounterChange,100);
     document.getElementById('race-info-box').hidden=true;
 }
 
