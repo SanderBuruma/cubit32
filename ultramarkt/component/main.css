@@ -58,9 +58,16 @@ a{
 }
 
 #inlogbtn:hover,
-#registreerbtn:hover{
+#registreerbtn:hover,
+#uitloggen:hover{
   background-color: white;
   color: var(--main-color-dark);
+}
+
+#gebruikersnaam{
+  float: right;
+  margin: 5px 10px 0 0;
+  font-size: 1.5rem;
 }
 
 #homeimage{
@@ -68,6 +75,7 @@ a{
   height: 30px;
   color: var(--main-color-dark);
   fill: var(--main-color-dark);
+  position: inline;
 }
 
 .wrapper{
@@ -83,6 +91,10 @@ a{
   top: 50px;
   box-shadow: 0px 0px 4px var(--main-color-dark);
   border: 0;
+  transition: box-shadow 0.5s;
+}
+#search-input:focus{
+  box-shadow: 0px 0px 8px white;
 }
 
 form#registreer,
@@ -117,6 +129,8 @@ form#registreer>h3{
 .success,
 .warning{
   width: auto;
+  margin: .7rem .0rem;
+  font-size: 1.5rem;
 }
 
 form#registreer>input[type="text"],

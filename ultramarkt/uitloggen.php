@@ -1,4 +1,5 @@
 <?php
-$_SESSION['username'] = NULL;
-$_SESSION['sessionID'] = NULL;
-header("Location: ./index.php?logout");
+session_start();
+$_SESSION['username'] = '';
+$_SESSION['sessionID'] = '';
+header("Location: ./index.php?logout=NULL");

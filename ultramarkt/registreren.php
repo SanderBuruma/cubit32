@@ -1,12 +1,10 @@
 <?php
 require('component/main.php');
-$_SESSION['page'] = "studenten";
 require('component/navbar.php');
 
 if (isset($_POST['submit'])){
 
   require('component/con_db.php');
-  // $con = mysqli_connect('localhost','root','w34#9^lgBJKV','ultramarkt');
 
   $password = $_POST['password'];
   $username = $_POST['username'];
@@ -50,10 +48,10 @@ if (isset($_POST['submit'])){
     $passwordMD5 = md5($password.$passwordSalt);
 
     $sql = "INSERT INTO `users` (`userID`, `username`, `email`, `passwordMD5`, `sessionID`, `passwordSalt`) VALUES (NULL, '$username', '$email', '$passwordMD5', '$sessionID','$passwordSalt')";
-    echo $sql;
     mysqli_query($con,$sql);
     $_SESSION['success'] = " $username geregistreerd!";
     $_SESSION['sessionID'] = $sessionID;
+    $_SESSION['username'] = $username;
     
   }
 }
