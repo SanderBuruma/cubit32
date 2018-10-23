@@ -13,8 +13,8 @@
 session_start();
 
 //display errors
-// ini_set('display_errors', 'On');
-// error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
 
 //iniate connection to db
 require('component/con_db.php');
