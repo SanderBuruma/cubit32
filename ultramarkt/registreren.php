@@ -6,21 +6,30 @@ if (isset($_POST['submit'])){
 
   require('component/con_db.php');
 
-  $password = $_POST['password'];
   $username = strtolower($_POST['username']);
+  $email = strtolower($_POST['email']);
   $passwordConfirm = $_POST['passwordConfirm'];
-  $email = $_POST['email'];
+  $password = $_POST['password'];
 
   //grab users with same username
-  $sql = "SELECT * FROM `users` WHERE `username` = `Bol159`";
+  $sql = "SELECT * FROM `users` WHERE `username` = '$username' ";
   $result = mysqli_query($con,$sql);
-  $resultnr = mysqli_num_rows ($result);
+  $resultnruser = mysqli_num_rows ($result);
 
-  if ($resultnr > 0){
+  //grab users with same email
+  $sql = "SELECT * FROM `users` WHERE `email` = '$email' ";
+  $result = mysqli_query($con,$sql);
+  $resultnremail = mysqli_num_rows ($result);
+
+  if       ($resultnruser > 0){
 
     $_SESSION['warning'] = "Gebruikernaam bestaat al";
 
-  } elseif (empty($password) || empty($passwordConfirm) || empty($username) || empty($email)){
+  } elseif ($resultnremail > 0){
+
+    $_SESSION['warning'] = "Email al in gebruik";
+
+	} elseif (empty($password) || empty($passwordConfirm) || empty($username) || empty($email)){
 
     $_SESSION['warning'] = "Leeg veld";
 
@@ -41,7 +50,6 @@ if (isset($_POST['submit'])){
     $_SESSION['success'] = "";
 
     $sessionID = "";
-    $hexchars = array("a","b","c","d","e","f","0","1","2","3","4","5","6","7","8","9");
     for ($i=0 ; $i<60 ; $i++){$sessionID .= $hexchars[array_rand($hexchars)];}
     $passwordSalt = '';
     for ($i=0 ; $i<16 ; $i++){$passwordSalt .= $hexchars[array_rand($hexchars)];}
@@ -49,7 +57,7 @@ if (isset($_POST['submit'])){
 
     $sql = "INSERT INTO `users` (`userID`, `username`, `email`, `passwordMD5`, `sessionID`, `passwordSalt`) VALUES (NULL, '$username', '$email', '$passwordMD5', '$sessionID','$passwordSalt')";
     mysqli_query($con,$sql);
-    $_SESSION['success'] = " $username geregistreerd!";
+    $_SESSION['success'] = "$username geregistreerd!";
     $_SESSION['sessionID'] = $sessionID;
     $_SESSION['username'] = $username;
     header("Location: ./index.php?register=success");

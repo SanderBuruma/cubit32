@@ -7,7 +7,7 @@ if (isset($_POST['submit'])){
   require('component/con_db.php');
 
   $password = $_POST['password'];
-  $username = $_POST['username'];
+  $username = strtolower($_POST['username']);
 
   //grab MD5 password with same username
   $sql = "SELECT passwordMD5,passwordSalt FROM `users` WHERE `username` LIKE '$username'";
@@ -16,8 +16,6 @@ if (isset($_POST['submit'])){
   $passwordSalt = $row['passwordSalt'];
   $dbPasswordMD5 = $row['passwordMD5'];
   $passwordMD5 = md5($_POST['password'].$passwordSalt);
-  echo $passwordMD5,' 1<br/>';
-  echo $dbPasswordMD5,' 2<br/>';
 
   if (empty($password) || empty($username)){
 
@@ -30,7 +28,6 @@ if (isset($_POST['submit'])){
   } else {
 
     $sessionID = "";
-    $hexchars = array("a","b","c","d","e","f","0","1","2","3","4","5","6","7","8","9");
     for ($i=0 ; $i<60 ; $i++){$sessionID .= array_rand($hexchars);}
 
     $sql = "UPDATE `users` SET `sessionID` = '$sessionID' WHERE `users`.`username` = `$username` ";

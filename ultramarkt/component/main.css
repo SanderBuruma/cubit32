@@ -38,15 +38,16 @@ a{
 
 #inlogbtn,
 #registreerbtn,
-#uitloggen{
+#uitloggen,
+#advertentie-plaatsen{
   background-color: var(--main-color-dark);
   color: white;
   float: right;
   margin-right: 10px;
   top: 3px;
   border-radius: 5px;
-  border: solid 2px var(--main-color-dark);
-  padding: 2px;
+  border: solid 0px var(--main-color-dark);
+  padding: 4px;
   transition: 0.2s background-color ease-out, 0.2s color ease-out;
 }
 #gebruikers-naam{
@@ -58,7 +59,8 @@ a{
 
 #inlogbtn:hover,
 #registreerbtn:hover,
-#uitloggen:hover{
+#uitloggen:hover,
+#advertentie-plaatsen:hover{
   background-color: white;
   color: var(--main-color-dark);
 }

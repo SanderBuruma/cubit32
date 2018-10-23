@@ -10,8 +10,11 @@
       echo '<a id="uitloggen" href="uitloggen.php">
         Uitloggen
       </a>
+      <a id="advertentie-plaatsen" href="advertentieplaatsen.php">
+      Advertentie Plaatsen
+      </a>
       <p id="gebruikersnaam">
-        '.$username.'
+        '.$sessionID.'
       </p>';
     } else {
       echo '<a id="inlogbtn" href="inloggen.php">
