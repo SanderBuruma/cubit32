@@ -7,7 +7,7 @@ if (isset($_POST['submit'])){
   require('component/con_db.php');
 
   $password = $_POST['password'];
-  $username = $_POST['username'];
+  $username = strtolower($_POST['username']);
   $passwordConfirm = $_POST['passwordConfirm'];
   $email = $_POST['email'];
 
@@ -52,6 +52,7 @@ if (isset($_POST['submit'])){
     $_SESSION['success'] = " $username geregistreerd!";
     $_SESSION['sessionID'] = $sessionID;
     $_SESSION['username'] = $username;
+    header("Location: ./index.php?register=success");
     
   }
 }

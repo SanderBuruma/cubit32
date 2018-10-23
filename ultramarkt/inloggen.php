@@ -38,6 +38,7 @@ if (isset($_POST['submit'])){
     $_SESSION['success'] = "ingelogt als \"$username\"!";
     $_SESSION['sessionID'] = $sessionID;
     $_SESSION['username'] = $username;
+    header("Location: ./index.php?inloggen=success");
 
   }
 }
