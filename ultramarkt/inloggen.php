@@ -28,9 +28,9 @@ if (isset($_POST['submit'])){
   } else {
 
     $sessionID = "";
-    for ($i=0 ; $i<60 ; $i++){$sessionID .= array_rand($hexchars);}
+    for ($i=0 ; $i<60 ; $i++){$sessionID .= $hexchars[array_rand($hexchars)];}
 
-    $sql = "UPDATE `users` SET `sessionID` = '$sessionID' WHERE `users`.`username` = `$username` ";
+    $sql = "UPDATE `users` SET `sessionID` = '$sessionID' WHERE `users`.`username` = `$username`";
     mysqli_query($con,$sql);
     $_SESSION['success'] = "ingelogt als \"$username\"!";
     $_SESSION['sessionID'] = $sessionID;

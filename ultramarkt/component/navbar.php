@@ -4,9 +4,13 @@
     UltraMarkt
   </a>
     <?php 
-    $username = $_SESSION['username'];
-    $sessionID = $_SESSION['sessionID'];
-    if (strlen($sessionID)>0){
+    
+    if (isset($_SESSION['sessionID'])){
+      $username = $_SESSION['username'];
+      $sessionID = $_SESSION['sessionID'];
+    };
+
+    if (isset($_SESSION['sessionID']) && strlen($sessionID) > 0){
       echo '<a id="uitloggen" href="uitloggen.php">
         Uitloggen
       </a>
