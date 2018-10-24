@@ -1,6 +1,8 @@
 :root{
   --main-color-light: rgb(215, 216, 255);
   --main-color-dark: rgb(104, 87, 255);
+  --border-solid-dark: #228 solid 2px;
+  --border-solid-light: white solid 2px;
 }
 
 *{
@@ -11,7 +13,8 @@
   font-family: monospace, arial;
   border-radius: 4px;
 }
-*:focus{
+*:focus,
+*:active{
   outline: none;
 }
 
@@ -29,6 +32,22 @@ body{
 
 a{
   text-decoration: none;
+}
+select{
+  margin: 2px 0;
+  color: #fff;
+  background-color: var(--main-color-dark);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border-top: var(--border-solid-light);
+  border-right: var(--border-solid-dark);
+  border-bottom: var(--border-solid-dark);
+  border-left: var(--border-solid-light);
+}
+select > *{
+  color: var(--main-color-light);
+  background-color: var(--main-color-dark);
 }
 
 #topbar{
