@@ -1,11 +1,35 @@
 <?php
 require('component/main.php');
+if (!isset($_SESSION['sessionID'])){
+  header("Location: ./index.php?session=expired");
+}
 require('component/navbar.php');
 require('component/con_db.php');
 $sessionID = $_SESSION['sessionID'];
 
 if (isset($_POST['submit'])){
+  print_r($_POST);
+  print_r($sessionID);
+  
+  //get userID
+  $sql = "SELECT userID FROM users WHERE sessionID = '$sessionID'";
+  $result = mysqli_query($son,$sql);
+  $userIDArr = array();
+  while($row = mysqli_fetch_array($result)) {
+      array_push($userIDArr,$row);
+  }
+  $userID = $userIDArr['userID'];
 
+  $categorieID = $_POST['categorie']; 
+  $subcategorieID = $_POST['subcategorie']; 
+  $prijs = $_POST['prijs']; 
+  $beschrijving = $_POST['beschrijving']; 
+  $titel = $_POST['titel']; 
+  $image1 = $_POST['image1']; 
+  $datumplaatsing; 
+  $tijdplaatsing; 
+
+  $sql = "INSERT INTO `advertentie` (`categorieID`, `subcategorieID`, `userID`, `prijs`, `beschrijving`, `datumplaatsing`, `tijdplaatsing`, `titel`, `image1`) VALUES ('$categorieID', '$subcategorieID', '$uesrID', '$prijs', '$beschrijving', '$datumplaatsing', '$tijdplaatsing', '$titel', '$image1')";
 }
 
 //grab categorieen
@@ -21,7 +45,7 @@ $sql = "SELECT * FROM `subcategorieen` ORDER BY `naam` ASC";
 $result = mysqli_query($con,$sql);
 $subcategorieArray = array();
 while($row = mysqli_fetch_array($result)) {
-    array_push($subcategorieArray,$row);
+  array_push($subcategorieArray,$row);
 }
 
 ?>
@@ -30,10 +54,10 @@ while($row = mysqli_fetch_array($result)) {
   <h3>Plaats Advertentie</h3>
   <p class="success"><?php echo $_SESSION['success']; $_SESSION['success'] = '' ?></p>
   <p class="warning"><?php echo $_SESSION['warning']; $_SESSION['warning'] = '' ?></p>
-  <input  type="text" name="title" placeholder="Titel"><br/>
+  <input  type="text" name="titel" placeholder="Titel"><br/>
   <textarea  type="textarea" name="beschrijving" value="" placeholder="beschrijving"></textarea><br/>
   <div>€ <input  type="number" name="prijs" placeholder="0,00" id="advertentie-prijs"></div><br/>
-  <input  type="file" name="image1" accept="image/*" id="file1-image">
+  <input  type="file" name="image1" accept="image/*" id="file1-upload">
   <select id="select-categorie" name="categorie">
     <option value="0">Selecteer een categorie...</option>
   <?php 

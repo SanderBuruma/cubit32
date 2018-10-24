@@ -17,8 +17,8 @@
       <a id="advertentie-plaatsen-btn" href="advertentieplaatsen.php">
       Advertentie Plaatsen
       </a>
-      <p id="gebruikersnaam">
-        '.$username.":".$sessionID.'
+      <p id="gebruikersnaam"><img class="navbar-icon" src="http://localhost/ultramarkt/img/user-regular.svg"/>
+        '.$username.'
       </p>';
     } else {
       echo '<a id="inlog-btn" href="inloggen.php">

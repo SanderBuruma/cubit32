@@ -62,7 +62,8 @@ select > *{
 #inlog-btn,
 #registreer-btn,
 #uitloggen-btn,
-#advertentie-plaatsen-btn{
+#advertentie-plaatsen-btn,
+#gebruikersnaam{
   background-color: var(--main-color-dark);
   color: white;
   float: right;
@@ -77,15 +78,16 @@ select > *{
 #inlog-btn:hover,
 #registreer-btn:hover,
 #uitloggen-btn:hover,
-#advertentie-plaatsen-btn:hover{
+#advertentie-plaatsen-btn:hover,
+#gebruikersnaam{
   background-color: white;
   color: var(--main-color-dark);
 }
 
-#gebruikersnaam{
-  float: right;
-  margin: 5px 10px 0 0;
-  font-size: 1.2rem;
+img.navbar-icon{
+  height: 1em;
+  float: left;
+  top: 2px;
 }
 
 #homeimage{

@@ -24,12 +24,11 @@ selectCategorie.onchange = function(){
   selectSubCategorie.selectedIndex = 0;
 }
 
-
 var uploadField = document.getElementById("file1-image");
 
 uploadField.onchange = function() {
-    if(this.files[0].size > 207152){
-       alert("File is too big! Max size 200kB");
-       this.value = "";
-    };
+  if(this.files[0].size > 207152){
+    alert("File is too big! Max size 200kB");
+    this.value = "";
+  };
 };
