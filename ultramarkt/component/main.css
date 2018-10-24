@@ -10,6 +10,9 @@
   font-family: monospace, arial;
   border-radius: 4px;
 }
+*:focus{
+  outline: none;
+}
 
 html{
   height: 700px;
@@ -36,10 +39,10 @@ a{
   border-radius: 0;
 }
 
-#inlogbtn,
-#registreerbtn,
-#uitloggen,
-#advertentie-plaatsen{
+#inlog-btn,
+#registreer-btn,
+#uitloggen-btn,
+#advertentie-plaatsen-btn{
   background-color: var(--main-color-dark);
   color: white;
   float: right;
@@ -50,17 +53,11 @@ a{
   padding: 4px;
   transition: 0.2s background-color ease-out, 0.2s color ease-out;
 }
-#gebruikers-naam{
-  float: right;
-  font-size: 2rem;
-  color: var(--main-color-dark);
-  padding: 0 2px;
-}
 
-#inlogbtn:hover,
-#registreerbtn:hover,
-#uitloggen:hover,
-#advertentie-plaatsen:hover{
+#inlog-btn:hover,
+#registreer-btn:hover,
+#uitloggen-btn:hover,
+#advertentie-plaatsen-btn:hover{
   background-color: white;
   color: var(--main-color-dark);
 }
@@ -68,7 +65,7 @@ a{
 #gebruikersnaam{
   float: right;
   margin: 5px 10px 0 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 #homeimage{
@@ -99,7 +96,8 @@ a{
 }
 
 form#registreer,
-form#inloggen{
+form#inloggen,
+form#advertentie-formulier{
   text-align: center;
   color: var(--main-color-dark);
   background-color: var(--main-color-light);
@@ -112,8 +110,7 @@ form#inloggen{
   box-shadow: 0px 0px 5px var(--main-color-dark);
 }
 
-form#inloggen>h3,
-form#registreer>h3{
+form>h3{
   font-size: 2rem;
 }
 
@@ -134,26 +131,27 @@ form#registreer>h3{
   font-size: 1.5rem;
 }
 
-form#registreer>input[type="text"],
-form#registreer>input[type="password"],
-form#inloggen>input[type="text"],
-form#inloggen>input[type="password"]{
+form>input[type="text"],
+form>input[type="password"],
+form>input[type="textarea"]{
   color: var(--main-color-dark);
   border-radius: 0;
   padding: 7px;
   border: none;
   border-bottom: 1px var(--main-color-dark) solid;
 }
-form#registreer>input[type="text"]:focus,
-form#registreer>input[type="password"]:focus,
-form#inloggen>input[type="text"]:focus,
-form#inloggen>input[type="password"]:focus{
+form>input[type="text"]:focus,
+form>input[type="password"]:focus,
+form>input[type="textarea"]:focus{
   box-shadow: 0px 0px 8px var(--main-color-dark);
   z-index: 1;
 }
 
-form#inloggen>button[type="submit"],
-form#registreer>button[type="submit"]{
+form>input[type="file"]{
+  border: none;
+}
+
+form>button[type="submit"]{
   margin-top: 4px;
   color: var(--main-color-dark);
   background-color: white;

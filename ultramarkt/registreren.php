@@ -50,9 +50,9 @@ if (isset($_POST['submit'])){
     $_SESSION['success'] = "";
 
     $sessionID = "";
-    for ($i=0 ; $i<60 ; $i++){$sessionID .= $hexchars[array_rand($hexchars)];}
+    for ($i=0 ; $i<60 ; $i++){$sessionID .= $alphanumericchars[array_rand($alphanumericchars)];}
     $passwordSalt = '';
-    for ($i=0 ; $i<16 ; $i++){$passwordSalt .= $hexchars[array_rand($hexchars)];}
+    for ($i=0 ; $i<16 ; $i++){$passwordSalt .= $alphanumericchars[array_rand($alphanumericchars)];}
     $passwordMD5 = md5($password.$passwordSalt);
 
     $sql = "INSERT INTO `users` (`userID`, `username`, `email`, `passwordMD5`, `sessionID`, `passwordSalt`) VALUES (NULL, '$username', '$email', '$passwordMD5', '$sessionID','$passwordSalt')";

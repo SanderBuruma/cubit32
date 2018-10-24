@@ -4,27 +4,27 @@
     UltraMarkt
   </a>
     <?php 
-    
+
     if (isset($_SESSION['sessionID'])){
       $username = $_SESSION['username'];
       $sessionID = $_SESSION['sessionID'];
     };
 
     if (isset($_SESSION['sessionID']) && strlen($sessionID) > 0){
-      echo '<a id="uitloggen" href="uitloggen.php">
+      echo '<a id="uitloggen-btn" href="uitloggen.php">
         Uitloggen
       </a>
-      <a id="advertentie-plaatsen" href="advertentieplaatsen.php">
+      <a id="advertentie-plaatsen-btn" href="advertentieplaatsen.php">
       Advertentie Plaatsen
       </a>
       <p id="gebruikersnaam">
-        '.$sessionID.'
+        '.$username.":".$sessionID.'
       </p>';
     } else {
-      echo '<a id="inlogbtn" href="inloggen.php">
+      echo '<a id="inlog-btn" href="inloggen.php">
       Inloggen
     </a>
-    <a id="registreerbtn" href="registreren.php">
+    <a id="registreer-btn" href="registreren.php">
       Registreren
     </a>';
     }

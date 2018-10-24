@@ -67,7 +67,6 @@ if (window.XMLHttpRequest) {//update typing text
     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     console.log('IE 5 or 6')
 }
-console.log(xmlhttp)
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {//start the practice
         textInformation = this.responseText.split("%SPLIT%")

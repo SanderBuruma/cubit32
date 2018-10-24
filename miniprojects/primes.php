@@ -21,13 +21,14 @@
     error_reporting(E_ALL);
 
     #initial primes array
-    $primesArr = array(2);
+    $primesArr = array(2,3,5);
 
-    #function that checks whether something is prime
+    #function that checks whether a number is prime
     function findPrime($nr){
       global $primesArr;
+      $sqsrtnr = sqrt($nr);
       $iterate = 0;
-      while ($primesArr[$iterate] <= sqrt($nr)){
+      while ($primesArr[$iterate] <= $sqsrtnr){
         if($nr%$primesArr[$iterate] == 0){
           return null;
         }
@@ -36,8 +37,9 @@
       $primesArr [] = $nr;
     }
 
-    for ($i=3 ; $i<1e7 ; $i+=2){
+    for ($i=7 ; $i<1e7 ; $i+=6){
       findPrime($i);
+      findPrime($i+4);
     }
     $prevPrime = 2;
     foreach($primesArr as $j => $i){
