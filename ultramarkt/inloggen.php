@@ -28,7 +28,7 @@ if (isset($_POST['submit'])){
   } else {
 
     $sessionID = "";
-    for ($i=0 ; $i<60 ; $i++){$sessionID .= $alphanumericchars[array_rand($alphanumericchars)];}
+    for ($i=0 ; $i<60 ; $i++){$sessionID .= $alphaNumericChars[array_rand($alphaNumericChars)];}
 
     $sql = "UPDATE `users` SET `sessionID` = '$sessionID' WHERE `users`.`username` = '$username'";
     mysqli_query($con,$sql);

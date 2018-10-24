@@ -37,7 +37,7 @@
       $primesArr [] = $nr;
     }
 
-    for ($i=7 ; $i<1e7 ; $i+=6){
+    for ($i=7 ; $i<1e6 ; $i+=6){
       findPrime($i);
       findPrime($i+4);
     }
