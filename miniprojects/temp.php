@@ -10,7 +10,7 @@
 <body>
 <?php
 
-print_r (round(microtime(true) * 1000));
+print_r (date("y-m-d"));
 
 ?>
 </body>

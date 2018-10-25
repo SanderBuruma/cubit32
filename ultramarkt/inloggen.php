@@ -50,5 +50,5 @@ if (isset($_POST['submit'])){
   <button type="submit" name='submit'>Log in!</button>
 </form>
 
-<?php 
+<?php
 require('component/mainend.php');

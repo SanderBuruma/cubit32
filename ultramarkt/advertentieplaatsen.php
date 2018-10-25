@@ -8,31 +8,43 @@ require('component/con_db.php');
 $sessionID = $_SESSION['sessionID'];
 
 if (isset($_POST['submit'])){
-  print_r($_POST);
-  print_r($sessionID);
   
   //get userID
   $sql = "SELECT userID FROM users WHERE sessionID = '$sessionID'";
-  $result = mysqli_query($son,$sql);
+  $result = mysqli_query($con,$sql);
   $userIDArr = array();
   while($row = mysqli_fetch_array($result)) {
       array_push($userIDArr,$row);
   }
-  $userID = $userIDArr['userID'];
+  echo '<pre>';
+  print_r($result);
+  echo '</pre>';
+  $userID = $userIDArr[0][0];
+  echo '<pre>';
+  print_r($_POST);
+  echo '</pre>';
 
   $categorieID = $_POST['categorie']; 
   $subcategorieID = $_POST['subcategorie']; 
   $prijs = $_POST['prijs']; 
   $beschrijving = $_POST['beschrijving']; 
   $titel = $_POST['titel']; 
-  $image1 = $_POST['image1']; 
-  $datumplaatsing; 
-  $tijdplaatsing; 
 
-  $sql = "INSERT INTO `advertentie` (`categorieID`, `subcategorieID`, `userID`, `prijs`, `beschrijving`, `datumplaatsing`, `tijdplaatsing`, `titel`, `image1`) VALUES ('$categorieID', '$subcategorieID', '$uesrID', '$prijs', '$beschrijving', '$datumplaatsing', '$tijdplaatsing', '$titel', '$image1')";
+  $image1 = $_POST['image1']; 
+
+  //sql voorbeeld
+  //INSERT INTO `advertentie` (`advertentieID`, `categorieID`, `subcategorieID`, `userID`, `prijs`, `beschrijving`, `datumplaatsing`, `tijdplaatsing`, `titel`, `image1`) VALUES (NULL, '1', '1', '15', '15', 'mooi ding ja', '2018-12-20', '07:25', 'telraam', 'productafbeeldingen/image1.jpg')
+  $datumplaatsing = date("y-m-d");
+  $tijdplaatsing = date("i:s");
+
+  $sql = "INSERT INTO `advertentie` (`categorieID`, `subcategorieID`, `userID`, `prijs`, `beschrijving`, `datumplaatsing`, `tijdplaatsing`, `titel`, `image1`) VALUES ('$categorieID', '$subcategorieID', '$userID', '$prijs', '$beschrijving', '$datumplaatsing', '$tijdplaatsing', '$titel', '$image1')";
+  $result = mysqli_query($con,$sql);
+  echo '<pre>';
+  print_r($sql);
+  echo '</pre>';
 }
 
-//grab categorieen
+//get categorieen
 $sql = "SELECT * FROM `categorieen`";
 $result = mysqli_query($con,$sql);
 $categorieArray = array();
@@ -40,7 +52,7 @@ while($row = mysqli_fetch_array($result)) {
     array_push($categorieArray,$row);
 }
 
-//grab subcategorieen
+//get subcategorieen
 $sql = "SELECT * FROM `subcategorieen` ORDER BY `naam` ASC";
 $result = mysqli_query($con,$sql);
 $subcategorieArray = array();
@@ -60,7 +72,7 @@ while($row = mysqli_fetch_array($result)) {
   <input  type="file" name="image1" accept="image/*" id="file1-upload">
   <select id="select-categorie" name="categorie">
     <option value="0">Selecteer een categorie</option>
-  <?php 
+  <?php
     foreach ($categorieArray as $key => $value){
       $catID = $value['categorieID'];
       $catNaam = $value['naam'];
@@ -70,7 +82,7 @@ while($row = mysqli_fetch_array($result)) {
   </select>
   <select id="select-sub-categorie" name="subcategorie">
     <option value="0" data-catid="0">Selecteer eerst een categorie</option>
-  <?php 
+  <?php
     foreach ($subcategorieArray as $key => $value){
       $subCatID = $value['subcategorieID'];
       $catID = $value['categorieID'];
@@ -83,5 +95,5 @@ while($row = mysqli_fetch_array($result)) {
 </form>
 <script src="./component/advertentieplaatsen.js"></script>
 
-<?php 
+<?php
 require('component/mainend.php');

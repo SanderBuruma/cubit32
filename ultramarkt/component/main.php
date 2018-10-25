@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>UltraMarkt</title>
   <link rel="stylesheet" href="component/main.css">
-  <link rel="icon" href="img/markt.png"> 
+  <link rel="icon" href="img/markt1.png"> 
 </head>
 <body>
 <?php

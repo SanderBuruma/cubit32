@@ -5,7 +5,7 @@
     </svg>
     UltraMarkt
   </a>
-    <?php 
+    <?php
 
     if (isset($_SESSION['sessionID'])){
       $username = $_SESSION['username'];
@@ -14,9 +14,15 @@
 
     if (isset($_SESSION['sessionID']) && strlen($sessionID) > 0){
       echo '<a id="uitloggen-btn" href="uitloggen.php">
+        <svg viewBox="0 -72 700 500" class="font">
+          <use xlink:href="#icon-sign-out"></use>
+        </svg>
         Uitloggen
       </a>
       <a id="advertentie-plaatsen-btn" href="advertentieplaatsen.php">
+      <svg viewBox="0 -72 700 500" class="font">
+        <use xlink:href="#icon-advertentie"></use>
+      </svg>
       Advertentie Plaatsen
       </a>
       <p id="gebruikersnaam"><img class="navbar-icon" src="http://localhost/ultramarkt/img/user-regular.svg"/>
@@ -28,11 +34,14 @@
       <svg viewBox="0 -72 500 500" class="font">
         <use xlink:href="#icon-sign-in"></use>
       </svg>
-      Inloggen
+       Inloggen
       </a>
       <a id="registreer-btn" href="registreren.php">
-        Registreren
+        <svg viewBox="0 -72 700 500" class="font">
+          <use xlink:href="#icon-user-plus"></use>
+        </svg>
+         Registreren
       </a>';
     }
-    ?> 
+    ?>
 </div>
