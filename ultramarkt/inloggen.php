@@ -45,7 +45,7 @@ if (isset($_POST['submit'])){
   <h3>Inloggen</h3>
   <p class="success"><?php echo $_SESSION['success']; $_SESSION['success'] = '' ?></p>
   <p class="warning"><?php echo $_SESSION['warning']; $_SESSION['warning'] = '' ?></p>
-  <input type="text" name="username" placeholder="Gebruikersnaam"><br/>
+  <input required autofocus type="text" name="username" pattern="[A-Za-z0-9]{6,}" oninvalid="setCustomValidity('minstens 6 karakters')" placeholder="Gebruikersnaam"><br/>
   <input type="password" name="password" value="" placeholder="paswoord"><br/>
   <button type="submit" name='submit'>Log in!</button>
 </form>

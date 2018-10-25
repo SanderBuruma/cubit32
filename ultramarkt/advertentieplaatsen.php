@@ -54,12 +54,12 @@ while($row = mysqli_fetch_array($result)) {
   <h3>Plaats Advertentie</h3>
   <p class="success"><?php echo $_SESSION['success']; $_SESSION['success'] = '' ?></p>
   <p class="warning"><?php echo $_SESSION['warning']; $_SESSION['warning'] = '' ?></p>
-  <input  type="text" name="titel" placeholder="Titel"><br/>
+  <input  type="text" name="titel" pattern="[A-Za-z0-9 \-\_]{6,}" oninvalid="setCustomValidity('minstens 6 tekens en alleen letters & nummers')" placeholder="Titel"><br/>
   <textarea  type="textarea" name="beschrijving" value="" placeholder="beschrijving"></textarea><br/>
-  <div>€ <input  type="number" name="prijs" placeholder="0,00" id="advertentie-prijs"></div><br/>
+  <div>€ <input  type="number" name="prijs" pattern="\d*?,\d{1,2}" oninvalid="setCustomValidity('minstens 6 tekens en alleen letters & nummers')"placeholder="0,00" id="advertentie-prijs"></div><br/>
   <input  type="file" name="image1" accept="image/*" id="file1-upload">
   <select id="select-categorie" name="categorie">
-    <option value="0">Selecteer een categorie...</option>
+    <option value="0">Selecteer een categorie</option>
   <?php 
     foreach ($categorieArray as $key => $value){
       $catID = $value['categorieID'];

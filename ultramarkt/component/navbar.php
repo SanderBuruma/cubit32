@@ -1,6 +1,8 @@
 <div id="topbar">
   <a href="./index.php" id="home">
-    <img id="homeimage" src="img/scales.svg"/>
+    <svg viewBox="0 -4 400 400" class="font">
+      <use xlink:href="#icon-scales"></use>
+    </svg>
     UltraMarkt
   </a>
     <?php 
@@ -22,15 +24,15 @@
       </p>';
     } else {
       echo '
-      <svg viewBox="0 0 32 32" class="font">
-        <use xlink:href="#icon-scales"></use>
-      </svg>
       <a id="inlog-btn" href="inloggen.php">
+      <svg viewBox="0 -72 500 500" class="font">
+        <use xlink:href="#icon-sign-in"></use>
+      </svg>
       Inloggen
-    </a>
-    <a id="registreer-btn" href="registreren.php">
-      Registreren
-    </a>';
+      </a>
+      <a id="registreer-btn" href="registreren.php">
+        Registreren
+      </a>';
     }
     ?> 
 </div>

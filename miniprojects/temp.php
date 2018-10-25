@@ -8,18 +8,10 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<?php 
-$var = 5;
-function test(&$arg){
-  static $count = 0;
-  $count++;
-  $arg++;
-  print_r("C:$count ");
-}
-for ($i=0 ; $i<5 ; $i++){
-  test($var);
-  print_r("V:$var <br/>");
-}
+<?php
+
+print_r (round(microtime(true) * 1000));
+
 ?>
 </body>
 </html>
