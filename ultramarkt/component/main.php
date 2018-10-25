@@ -12,6 +12,9 @@
 <?php
 session_start();
 
+//grab special svg font characters 
+require("svg.php");
+
 //display errors
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);

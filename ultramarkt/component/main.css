@@ -49,6 +49,11 @@ select > *{
   color: var(--main-color-light);
   background-color: var(--main-color-dark);
 }
+svg {
+  height: 1em;
+  fill: currentColor;
+  vertical-align: bottom;
+}
 
 #topbar{
   background-color: var(--main-color-light);

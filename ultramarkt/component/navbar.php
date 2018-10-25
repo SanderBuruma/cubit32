@@ -21,7 +21,11 @@
         '.$username.'
       </p>';
     } else {
-      echo '<a id="inlog-btn" href="inloggen.php">
+      echo '
+      <svg viewBox="0 0 32 32" class="font">
+        <use xlink:href="#icon-scales"></use>
+      </svg>
+      <a id="inlog-btn" href="inloggen.php">
       Inloggen
     </a>
     <a id="registreer-btn" href="registreren.php">
