@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <table>
+  <!-- <table>
     <tr>
     <th>ID</th>
     <th>Prime</th>
     <th>Gap</th>
-    </tr>
+    </tr> -->
     <?php
 
     #turn on error reporting
@@ -27,7 +27,7 @@
     function findPrime($nr){
       global $primesArr;
       $sqsrtnr = sqrt($nr);
-      $iterate = 0;
+      $iterate = 1;
       while ($primesArr[$iterate] <= $sqsrtnr){
         if($nr%$primesArr[$iterate] == 0){
           return null;
@@ -42,13 +42,16 @@
       findPrime($i+4);
     }
     $prevPrime = 2;
-    foreach($primesArr as $j => $i){
-      echo '<tr>';
-      echo "<td>".$j.'</td><td>'.$i.'</td><td>'.($i-$prevPrime).'</td>';
-      echo '</tr>';
-      $prevPrime = $i;
-    }
+    echo'<pre>';
+    print_r($primesArr);
+    echo '</pre>'
+    // foreach($primesArr as $j => $i){
+    //   echo '<tr>';
+    //   echo "<td>".$j.'</td><td>'.$i.'</td><td>'.($i-$prevPrime).'</td>';
+    //   echo '</tr>';
+    //   $prevPrime = $i;
+    // }
     ?>
-  </table>
+  <!-- </table> -->
 </body>
 </html>

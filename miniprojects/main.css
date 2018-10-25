@@ -8,6 +8,24 @@ table > tr{
   text-align: center;
   border-bottom: 2px #449 solid;
 }
+form{
+  border: 2px #aaf solid;
+  background-color: #eef;
+  text-align: center;
+  padding: 0 6px;
+  display: block;
+  position: relative;
+  top: 100px;
+  border-radius: 8px;
+  width: 400px;
+  margin: 0 auto;
+}
+form>p{
+  background-color: #ddf;
+}
+form>input{
+  text-align: center;
+}
 tr:first-child{
   background-color: white;
   border: 2px #66a solid;

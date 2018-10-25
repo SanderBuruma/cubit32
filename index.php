@@ -87,6 +87,12 @@
     <div class="bluebg">
       <div id="projects">
         <div>
+          <img src="svg/balance-scale-solid.svg"/>
+          <div>
+            <p></p><p>UltraMarkt: Een imitatie van Marktplaats.</p><a href="../ultramarkt/">Bezoek!</a>
+          </div>
+        </div>
+        <div>
           <img src="img/poker-chip-512.png" style="width: auto; left: 14.5%;"/>
           <div>
             <p></p><p>Poker Bot Wars: Programmeer uw eigen poker bot en zet hem los op de competitie!</p><a href="../pokerbot">Bezoek!</a>
@@ -111,12 +117,18 @@
           </div>
         </div>
         <div>
+          <img src="svg/search-minus-solid.svg"/>
+          <div>
+            <p></p><p>Miniprojects: 1 minuut miniprojecten om bepaalde dingen te testen en om te experimenteren.</p><a href="../miniprojects/">Bezoek!</a>
+          </div>
+        </div>
+        <div class="nolink">
           <img src="svg/space-shuttle-solid.svg"/>
           <div>
             <p></p><p>HubbleHack: neem de macht over de hubble telescoop om de buitenaardse steden van Alpha Centauri III te bekijken.</p><a href="#projects">Bezoek!</a>
           </div>
         </div>
-        <div>
+        <div class="nolink">
           <img src="svg/robot-solid.svg"/>
           <div>
             <p></p><p>Elise Chatbot: een chatbot die niet van een persoon te onderscheiden is. Ze leeft haar eigen gesimuleerde leven en heeft een buitengewoon aangename personaliteit.</p><a href="#projects">Bezoek!</a>

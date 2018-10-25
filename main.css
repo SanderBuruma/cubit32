@@ -265,7 +265,7 @@ a:visited{
 
 /*#projects */
 #projects{
-  margin-left: 5%;
+  margin-left: 10%;
   width: 80%;
   display: flex;
   justify-content: center;
@@ -286,6 +286,9 @@ a:visited{
   text-align: center;
   line-height: 1em;
   position: relative;
+}
+#projects > div.nolink{
+  border: 2px dashed grey;
 }
 #projects > div > *{
   opacity: 0;
@@ -330,6 +333,17 @@ a:visited{
   background-color: var(--white);
   color: var(--blueish);
 }
+#projects > div.nolink > *{
+  color: grey;
+}
+#projects > div.nolink > div > a{
+  background-color: grey;
+  border: 2px dashed white;
+}
+#projects > div.nolink > div > a:hover{
+  color: black;
+}
+
 #projects > div:hover > *{
   opacity: 1;
 }
