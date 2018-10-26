@@ -11,6 +11,12 @@
 <body>
 <?php
 session_start();
+if (!isset($_SESSION['success'])){
+  $_SESSION['success'] = '';
+}
+if (!isset($_SESSION['warning'])){
+  $_SESSION['warning'] = '';
+}
 
 //grab special svg font characters 
 require("svg.php");

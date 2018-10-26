@@ -10,7 +10,7 @@ for (i of selectSubCategorie){
 
 selectCategorie.onchange = function(){
   let categorieIndex = this[this.selectedIndex].value;
-  for (i in selectSubCategorie){//compare current categorieID to the subcategorie-categorieID and display or hide accordingly
+  for (i in selectSubCategorie){//compare current categorieID to the subcategorieID and display or hide accordingly
     let firstIndex;
     if (selectSubCategorie[i].dataset.catid == categorieIndex){
       selectSubCategorie[i].disabled = false;

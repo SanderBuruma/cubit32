@@ -122,18 +122,6 @@
             <p></p><p>Miniprojects: 1 minuut miniprojecten om bepaalde dingen te testen en om te experimenteren.</p><a href="../miniprojects/">Bezoek!</a>
           </div>
         </div>
-        <div class="nolink">
-          <img src="svg/space-shuttle-solid.svg"/>
-          <div>
-            <p></p><p>HubbleHack: neem de macht over de hubble telescoop om de buitenaardse steden van Alpha Centauri III te bekijken.</p><a href="#projects">Bezoek!</a>
-          </div>
-        </div>
-        <div class="nolink">
-          <img src="svg/robot-solid.svg"/>
-          <div>
-            <p></p><p>Elise Chatbot: een chatbot die niet van een persoon te onderscheiden is. Ze leeft haar eigen gesimuleerde leven en heeft een buitengewoon aangename personaliteit.</p><a href="#projects">Bezoek!</a>
-          </div>
-        </div>
       </div>
       <div id="footer">
         <div>

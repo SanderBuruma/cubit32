@@ -17,6 +17,9 @@
 *:active{
   outline: none;
 }
+*:valid{
+  border-color: green;
+}
 
 html{
   height: 700px;

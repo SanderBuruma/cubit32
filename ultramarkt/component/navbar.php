@@ -23,7 +23,7 @@
       <svg viewBox="0 -72 700 500" class="font">
         <use xlink:href="#icon-advertentie"></use>
       </svg>
-      Advertentie Plaatsen
+      Advertentie Plaatsen  
       </a>
       <p id="gebruikersnaam"><img class="navbar-icon" src="http://localhost/ultramarkt/img/user-regular.svg"/>
         '.$username.'

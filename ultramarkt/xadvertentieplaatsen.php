@@ -15,20 +15,11 @@ if (isset($_POST['submit'])){
   $imageFileType = $_FILES['image1']['type'];
   if ($_FILES["image1"]["size"] > 2.08e5){
     $_SESSION["warning"] = "file too big, <200kb required";
-  }elseif($imageFileType != "image/jpg" && $imageFileType != "image/png" && $imageFileType != "image/jpeg" && $imageFileType != "image/gif"){
+  }elseif($imageFileType != "image/jpg" && $imageFileType != "image/png" && $imageFileType != "image/jpeg"
+  && $imageFileType != "image/gif"){
     $_SESSION["warning"] = "only JPG, JPEG, PNG & GIF files are allowed.";
   }else{
     
-    //move file to corect folder
-    $targetFolder = "productafbeeldingen/";
-    $fileNameToBe = date("ymdGis").explode(".",(microtime(true)))[1].random_int(1e8,1e9-1);
-    if (move_uploaded_file($_FILES["image1"]["tmp_name"], $targetFolder.$fileNameToBe)) {
-      //success
-    }else{
-      //failure
-      $_SESSION['warning'] = "image1 failed to upload";
-    }
-
     //get userID
     $sql = "SELECT userID FROM users WHERE sessionID = '$sessionID'";
     $result = mysqli_query($con,$sql);
