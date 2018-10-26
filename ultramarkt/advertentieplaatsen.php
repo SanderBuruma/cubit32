@@ -19,11 +19,13 @@ if (isset($_POST['submit'])){
     $_SESSION["warning"] = "only JPG, JPEG, PNG & GIF files are allowed.";
   }else{
     
-    //move file to corect folder
+    //move file to corect folder and with a unique (numerical) name based on the current date and a random string of numbers
     $targetFolder = "productafbeeldingen/";
-    $fileNameToBe = date("ymdGis").explode(".",(microtime(true)))[1].random_int(1e8,1e9-1);
-    if (move_uploaded_file($_FILES["image1"]["tmp_name"], $targetFolder.$fileNameToBe)) {
+    $extension = ".".explode(".",$_FILES['image1']['name'])[1];
+    $image1path = $targetFolder.date("ymdGis").explode(".",(microtime(true)))[1].random_int(1e8,1e9-1).$extension;
+    if (move_uploaded_file($_FILES["image1"]["tmp_name"], $image1path)) {
       //success
+      $_SESSION['success'] = "file uploaded";
     }else{
       //failure
       $_SESSION['warning'] = "image1 failed to upload";
@@ -44,7 +46,6 @@ if (isset($_POST['submit'])){
     $beschrijving = $_POST['beschrijving']; 
     $titel = $_POST['titel']; 
 
-    $image1; 
 
 
     //sql voorbeeld
@@ -52,7 +53,7 @@ if (isset($_POST['submit'])){
     $datumplaatsing = date("y-m-d");
     $tijdplaatsing = date("G:i:s");
 
-    $sql = "INSERT INTO `advertentie` (`categorieID`, `subcategorieID`, `userID`, `prijs`, `beschrijving`, `datumplaatsing`, `tijdplaatsing`, `titel`, `image1`) VALUES ('$categorieID', '$subcategorieID', '$userID', '$prijs', '$beschrijving', '$datumplaatsing', '$tijdplaatsing', '$titel', '$image1')";
+    $sql = "INSERT INTO `advertentie` (`categorieID`, `subcategorieID`, `userID`, `prijs`, `beschrijving`, `datumplaatsing`, `tijdplaatsing`, `titel`, `image1`) VALUES ('$categorieID', '$subcategorieID', '$userID', '$prijs', '$beschrijving', '$datumplaatsing', '$tijdplaatsing', '$titel', '$image1path')";
     $result = mysqli_query($con,$sql);
     echo '<pre>';
     print_r($sql);

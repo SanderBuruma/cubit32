@@ -30,4 +30,3 @@ require('component/con_db.php');
 
 //initiate reference arrays
 $alphaNumericChars = str_split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJVKLMNOPQRSTUVWXYZ1234567890");
-?>

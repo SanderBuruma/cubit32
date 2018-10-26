@@ -19,14 +19,5 @@
     <g id="icon-abcxyz">
       <path class="path1" d="%AAA%"/>
     </g>
-    <g id="icon-abcxyz">
-      <path class="path1" d="%AAA%"/>
-    </g>
-    <g id="icon-abcxyz">
-      <path class="path1" d="%AAA%"/>
-    </g>
-    <g id="icon-abcxyz">
-      <path class="path1" d="%AAA%"/>
-    </g>
   </defs>
 </svg>
