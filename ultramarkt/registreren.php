@@ -4,7 +4,7 @@ require('includes/navbar.php');
 
 if (isset($_POST['submit'])){
 
-  $username = filter_var(strtolower($_POST['username'],FILTER_SANITIZE_STRING));
+  $username = filter_var(strtolower($_POST['username']),FILTER_SANITIZE_STRING);
   $email = filter_var(strtolower($_POST['email']),FILTER_SANITIZE_EMAIL);
   $passwordConfirm = $_POST['passwordConfirm'];
   $password = $_POST['password'];
@@ -59,7 +59,7 @@ if (isset($_POST['submit'])){
     for ($i=0 ; $i<60 ; $i++){$sessionID .= $alphaNumericChars[array_rand($alphaNumericChars)];}
     $passwordSalt = '';
     for ($i=0 ; $i<16 ; $i++){$passwordSalt .= $alphaNumericChars[array_rand($alphaNumericChars)];}
-    $passwordMD5 = md5($password.$passwordSalt);
+    $passwordMD5 = hash("sha3-512",$password.$passwordSalt);
 
     $sql = "SELECT * FROM `users` WHERE `email` = '$email' ";
     $stmt = $con->prepare("INSERT INTO users (username, email, passwordMD5, sessionID, passwordSalt) VALUES (?,?,?,?,?)");
