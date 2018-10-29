@@ -4,18 +4,19 @@ require('includes/navbar.php');
 
 if (isset($_POST['submit'])){
 
-  require('includes/con_db.php');
 
-  $password = mysqli_real_escape_string($con,$_POST['password']);
-  $username = strtolower(mysqli_real_escape_string($con,$_POST['username']));
+  $password = $_POST['password'];
+  $username = strtolower($_POST['username']);
 
-  //grab MD5 password with same username
-  $sql = "SELECT passwordMD5,passwordSalt FROM `users` WHERE `username` LIKE '$username'";
-  $result = mysqli_query($con,$sql);
-  $row = mysqli_fetch_array($result);
-  $passwordSalt = $row['passwordSalt'];
-  $dbPasswordMD5 = $row['passwordMD5'];
-  $passwordMD5 = md5(mysqli_real_escape_string($con,$_POST['password']).$passwordSalt);
+  //grab password hash and password salt from same username
+  $stmt = $con->prepare("SELECT passwordMD5,passwordSalt FROM users WHERE username LIKE ?");
+  $stmt->bind_param("s",$username);
+  $stmt->execute();
+  $res = $stmt->get_result();
+  $result = $res->fetch_all()[0];
+  $dbPasswordMD5 = $result[0];
+  $passwordSalt = $result[1];
+  $passwordMD5 = md5($password.$passwordSalt);
 
   if (empty($password) || empty($username)){
 
@@ -30,7 +31,7 @@ if (isset($_POST['submit'])){
     $sessionID = "";
     for ($i=0 ; $i<60 ; $i++){$sessionID .= $alphaNumericChars[array_rand($alphaNumericChars)];}
 
-    $sql = "UPDATE `users` SET `sessionID` = '$sessionID' WHERE `users`.`username` = '$username'";
+    $sql = "UPDATE users SET sessionID = '$sessionID' WHERE users.username = '$username'";
     mysqli_query($con,$sql);
     $_SESSION['success'] = "ingelogt als \"$username\"!";
     $_SESSION['sessionID'] = $sessionID;

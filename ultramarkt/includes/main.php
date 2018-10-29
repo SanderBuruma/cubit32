@@ -19,15 +19,15 @@ if (!isset($_SESSION['warning'])){
   $_SESSION['warning'] = '';
 }
 
+//display errors
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
+
 //grab special svg font characters 
 require("svg.php");
 
-//display errors
-// ini_set('display_errors', 'On');
-// error_reporting(E_ALL);
-
 //iniate connection to db
-require('includes/con_db.php');
+require('includes/con_db_ultramarkt.php');
 
 //initiate reference arrays
 $alphaNumericChars = str_split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJVKLMNOPQRSTUVWXYZ1234567890");

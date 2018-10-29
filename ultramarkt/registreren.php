@@ -4,26 +4,32 @@ require('includes/navbar.php');
 
 if (isset($_POST['submit'])){
 
-  require('includes/con_db.php');
-
-  $username = strtolower(mysqli_real_escape_string($con,$_POST['username']));
-  $email = strtolower(mysqli_real_escape_string($con,$_POST['email']));
-  $passwordConfirm = mysqli_real_escape_string($con,$_POST['passwordConfirm']);
-  $password = mysqli_real_escape_string($con,$_POST['password']);
+  $username = strtolower($_POST['username']);
+  $email = strtolower($_POST['email']);
+  $passwordConfirm = $_POST['passwordConfirm'];
+  $password = $_POST['password'];
 
   //grab users with same username
   $sql = "SELECT * FROM `users` WHERE `username` = '$username' ";
-  $result = mysqli_query($con,$sql);
-  $resultnruser = mysqli_num_rows ($result);
+  $stmt = $con->prepare("SELECT * FROM users WHERE username = ? ");
+  $stmt->bind_param("s",$username);
+  $stmt->execute();
+  $res = $stmt->get_result();
+  $result = $res->fetch_all(); 
+  $resultnruser = count($result);
 
   //grab users with same email
   $sql = "SELECT * FROM `users` WHERE `email` = '$email' ";
-  $result = mysqli_query($con,$sql);
-  $resultnremail = mysqli_num_rows ($result);
+  $stmt = $con->prepare("SELECT * FROM users WHERE email = ? ");
+  $stmt->bind_param("s",$email);
+  $stmt->execute();
+  $res = $stmt->get_result();
+  $result = $res->fetch_all(); 
+  $resultnremail = count($result);
 
   if       ($resultnruser > 0){
 
-    $_SESSION['warning'] = "Gebruikernaam bestaat al";
+    $_SESSION['warning'] = "Gebruikersnaam bestaat al";
 
   } elseif ($resultnremail > 0){
 
@@ -55,8 +61,11 @@ if (isset($_POST['submit'])){
     for ($i=0 ; $i<16 ; $i++){$passwordSalt .= $alphaNumericChars[array_rand($alphaNumericChars)];}
     $passwordMD5 = md5($password.$passwordSalt);
 
-    $sql = "INSERT INTO `users` (`userID`, `username`, `email`, `passwordMD5`, `sessionID`, `passwordSalt`) VALUES (NULL, '$username', '$email', '$passwordMD5', '$sessionID','$passwordSalt')";
-    mysqli_query($con,$sql);
+    $sql = "SELECT * FROM `users` WHERE `email` = '$email' ";
+    $stmt = $con->prepare("INSERT INTO users (username, email, passwordMD5, sessionID, passwordSalt) VALUES (?,?,?,?,?)");
+    $stmt->bind_param("sssss",$username,$email,$passwordMD5,$sessionID,$passwordSalt);
+    $stmt->execute();
+
     $_SESSION['success'] = "$username geregistreerd!";
     $_SESSION['sessionID'] = $sessionID;
     $_SESSION['username'] = $username;

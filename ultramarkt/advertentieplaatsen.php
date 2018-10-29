@@ -4,7 +4,6 @@ if (!isset($_SESSION['sessionID'])){
   header("Location: ./index.php?session=expired");
 }
 require('includes/navbar.php');
-require('includes/con_db.php');
 $sessionID = $_SESSION['sessionID'];
 
 if (isset($_POST['submit'])){
@@ -15,8 +14,8 @@ if (isset($_POST['submit'])){
   }elseif($imageFileType != "image/jpg" && $imageFileType != "image/png" && $imageFileType != "image/jpeg" && $imageFileType != "image/gif"){
     $_SESSION["warning"] = "only JPG, JPEG, PNG & GIF files are allowed.";
   }else{
-    
-    //move file to corect folder and with a unique (numerical) name based on the current date and a random string of numbers
+
+    //move file to corect folder and with a unique (numerical) name based on the current date and a random string of numbers designed to prevent matching file names which can not be predicted by the dishonorable user
     $targetFolder = "productafbeeldingen/";
     $extension = ".".explode(".",$_FILES['image1']['name'])[1];
     $image1path = $targetFolder.date("ymdGis").explode(".",(microtime(true)))[1].random_int(1e8,1e9-1).$extension;
@@ -29,32 +28,30 @@ if (isset($_POST['submit'])){
     }
 
     //get userID
-    $sql = "SELECT userID FROM users WHERE sessionID = '$sessionID'";
-    $result = mysqli_query($con,$sql);
-    $userIDArr = array();
-    while($row = mysqli_fetch_array($result)) {
-        array_push($userIDArr,$row);
-    }
-    $userID = $userIDArr[0][0];
+    $stmt = $con->prepare("SELECT userID FROM users WHERE sessionID = ?");
+    $stmt->bind_param("s",$sessionID);
+    $stmt->execute();
+    $res = $stmt->get_result();
+    $result = $res->fetch_all()[0];
+    $userID = $result[0];
 
-    $categorieID = mysqli_real_escape_string($con,$_POST['categorie']); 
-    $subcategorieID = mysqli_real_escape_string($con,$_POST['subcategorie']); 
-    $prijs = mysqli_real_escape_string($con,$_POST['prijs']); 
-    $beschrijving = mysqli_real_escape_string($con,$_POST['beschrijving']); 
-    $titel = mysqli_real_escape_string($con,$_POST['titel']); 
+    $categorieID = $_POST['categorie']; 
+    $subcategorieID = $_POST['subcategorie']; 
+    $prijs = $_POST['prijs']; 
+    $beschrijving = $_POST['beschrijving']; 
+    $titel = $_POST['titel']; 
 
-    //sql voorbeeld
-    //INSERT INTO `advertentie` (`advertentieID`, `categorieID`, `subcategorieID`, `userID`, `prijs`, `beschrijving`, `datumplaatsing`, `tijdplaatsing`, `titel`, `image1`) VALUES (NULL, '1', '1', '15', '15', 'mooi ding ja', '2018-12-20', '07:25', 'telraam', 'productafbeeldingen/image1.jpg')
     $datumplaatsing = date("y-m-d");
     $tijdplaatsing = date("G:i:s");
 
-    $sql = "INSERT INTO `advertentie` (`categorieID`, `subcategorieID`, `userID`, `prijs`, `beschrijving`, `datumplaatsing`, `tijdplaatsing`, `titel`, `image1`) VALUES ('$categorieID', '$subcategorieID', '$userID', '$prijs', '$beschrijving', '$datumplaatsing', '$tijdplaatsing', '$titel', '$image1path')";
-    $result = mysqli_query($con,$sql);
+    $stmt = $con->prepare("INSERT INTO advertentie (categorieID, subcategorieID, userID, prijs, beschrijving, datumplaatsing, tijdplaatsing, titel, image1) VALUES (?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("iiidsssss",$categorieID,$subcategorieID,$userID,$prijs,$beschrijving,$datumplaatsing,$tijdplaatsing,$titel,$image1path);
+    $stmt->execute();
   }
 }
 
 //get categorieen
-$sql = "SELECT * FROM `categorieen`";
+$sql = "SELECT * FROM categorieen";
 $result = mysqli_query($con,$sql);
 $categorieArray = array();
 while($row = mysqli_fetch_array($result)) {
@@ -62,7 +59,7 @@ while($row = mysqli_fetch_array($result)) {
 }
 
 //get subcategorieen
-$sql = "SELECT * FROM `subcategorieen` ORDER BY `naam` ASC";
+$sql = "SELECT * FROM subcategorieen ORDER BY naam ASC";
 $result = mysqli_query($con,$sql);
 $subcategorieArray = array();
 while($row = mysqli_fetch_array($result)) {
