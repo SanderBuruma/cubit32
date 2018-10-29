@@ -4,8 +4,8 @@ require('includes/navbar.php');
 
 if (isset($_POST['submit'])){
 
-  $username = strtolower($_POST['username']);
-  $email = strtolower($_POST['email']);
+  $username = filter_var(strtolower($_POST['username'],FILTER_SANITIZE_STRING));
+  $email = filter_var(strtolower($_POST['email']),FILTER_SANITIZE_EMAIL);
   $passwordConfirm = $_POST['passwordConfirm'];
   $password = $_POST['password'];
 
