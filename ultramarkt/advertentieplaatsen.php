@@ -8,9 +8,6 @@ require('component/con_db.php');
 $sessionID = $_SESSION['sessionID'];
 
 if (isset($_POST['submit'])){
-  echo '<pre>';
-  print_r($_FILES);
-  echo '</pre>';
   // check file
   $imageFileType = $_FILES['image1']['type'];
   if ($_FILES["image1"]["size"] > 2.08e5){
@@ -40,13 +37,11 @@ if (isset($_POST['submit'])){
     }
     $userID = $userIDArr[0][0];
 
-    $categorieID = $_POST['categorie']; 
-    $subcategorieID = $_POST['subcategorie']; 
-    $prijs = $_POST['prijs']; 
-    $beschrijving = $_POST['beschrijving']; 
-    $titel = $_POST['titel']; 
-
-
+    $categorieID = mysqli_real_escape_string($con,$_POST['categorie']); 
+    $subcategorieID = mysqli_real_escape_string($con,$_POST['subcategorie']); 
+    $prijs = mysqli_real_escape_string($con,$_POST['prijs']); 
+    $beschrijving = mysqli_real_escape_string($con,$_POST['beschrijving']); 
+    $titel = mysqli_real_escape_string($con,$_POST['titel']); 
 
     //sql voorbeeld
     //INSERT INTO `advertentie` (`advertentieID`, `categorieID`, `subcategorieID`, `userID`, `prijs`, `beschrijving`, `datumplaatsing`, `tijdplaatsing`, `titel`, `image1`) VALUES (NULL, '1', '1', '15', '15', 'mooi ding ja', '2018-12-20', '07:25', 'telraam', 'productafbeeldingen/image1.jpg')
@@ -55,9 +50,6 @@ if (isset($_POST['submit'])){
 
     $sql = "INSERT INTO `advertentie` (`categorieID`, `subcategorieID`, `userID`, `prijs`, `beschrijving`, `datumplaatsing`, `tijdplaatsing`, `titel`, `image1`) VALUES ('$categorieID', '$subcategorieID', '$userID', '$prijs', '$beschrijving', '$datumplaatsing', '$tijdplaatsing', '$titel', '$image1path')";
     $result = mysqli_query($con,$sql);
-    echo '<pre>';
-    print_r($sql);
-    echo '</pre>';
   }
 }
 

@@ -6,8 +6,8 @@ if (isset($_POST['submit'])){
 
   require('component/con_db.php');
 
-  $password = $_POST['password'];
-  $username = strtolower($_POST['username']);
+  $password = mysqli_real_escape_string($con,$_POST['password']);
+  $username = strtolower(mysqli_real_escape_string($con,$_POST['username']));
 
   //grab MD5 password with same username
   $sql = "SELECT passwordMD5,passwordSalt FROM `users` WHERE `username` LIKE '$username'";
@@ -15,7 +15,7 @@ if (isset($_POST['submit'])){
   $row = mysqli_fetch_array($result);
   $passwordSalt = $row['passwordSalt'];
   $dbPasswordMD5 = $row['passwordMD5'];
-  $passwordMD5 = md5($_POST['password'].$passwordSalt);
+  $passwordMD5 = md5(mysqli_real_escape_string($con,$_POST['password']).$passwordSalt);
 
   if (empty($password) || empty($username)){
 

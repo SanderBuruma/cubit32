@@ -9,6 +9,7 @@
   <link rel="icon" href="img/markt1.png"> 
 </head>
 <body>
+<div id="bgimage"></div>
 <?php
 session_start();
 if (!isset($_SESSION['success'])){
@@ -22,8 +23,8 @@ if (!isset($_SESSION['warning'])){
 require("svg.php");
 
 //display errors
-ini_set('display_errors', 'On');
-error_reporting(E_ALL);
+// ini_set('display_errors', 'On');
+// error_reporting(E_ALL);
 
 //iniate connection to db
 require('component/con_db.php');

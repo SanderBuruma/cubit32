@@ -6,10 +6,10 @@ if (isset($_POST['submit'])){
 
   require('component/con_db.php');
 
-  $username = strtolower($_POST['username']);
-  $email = strtolower($_POST['email']);
-  $passwordConfirm = $_POST['passwordConfirm'];
-  $password = $_POST['password'];
+  $username = strtolower(mysqli_real_escape_string($con,$_POST['username']));
+  $email = strtolower(mysqli_real_escape_string($con,$_POST['email']));
+  $passwordConfirm = mysqli_real_escape_string($con,$_POST['passwordConfirm']);
+  $password = mysqli_real_escape_string($con,$_POST['password']);
 
   //grab users with same username
   $sql = "SELECT * FROM `users` WHERE `username` = '$username' ";
@@ -70,10 +70,10 @@ if (isset($_POST['submit'])){
   <h3>Registratie</h3>
   <p class="success"><?php echo $_SESSION['success']; $_SESSION['success'] = '' ?></p>
   <p class="warning"><?php echo $_SESSION['warning']; $_SESSION['warning'] = '' ?></p>
-  <input type="text" name="username" pattern="[A-Za-z0-9 \-\_]{6,}" oninvalid="setCustomValidity('minstens 6 tekens en alleen letters & nummers')" placeholder="Gebruikersnaam"><br/>
+  <input type="text" name="username" pattern="[A-Za-z0-9 \-\_]{6,}" oninvalid="setCustomValidity('minstens 6 tekens en alleen letters, nummers, `-` en `_`')" placeholder="Gebruikersnaam"><br/>
   <input type="text" name="email" pattern="^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$"  oninvalid="setCustomValidity('ongeldige e-mail')" placeholder="E-Mail"><br/>
-  <input type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" oninvalid="setCustomValidity('minstens 8 tekens, 1 hoofdletter, kleine letter, getal en speciaal karakter')" name="password" value="" placeholder="paswoord"><br/>
-  <input type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" oninvalid="setCustomValidity('minstens 8 tekens, 1 hoofdletter, kleine letter, getal en speciaal karakter')" name="passwordConfirm" placeholder="zelfde paswoord"><br/>
+  <input type="password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})" oninvalid="setCustomValidity('minstens 1 kleine letter, 1 hoofdletter, 1 getal en meer dan 7 tekens')" name="password" value="" placeholder="paswoord"><br/>
+  <input type="password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})" oninvalid="setCustomValidity('minstens 1 kleine letter, 1 hoofdletter, 1 getal en meer dan 7 tekens')" name="passwordConfirm" placeholder="zelfde paswoord"><br/>
   <button type="submit" name='submit'>Registreer!</button>
 </form>
 

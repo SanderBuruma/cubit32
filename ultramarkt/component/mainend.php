@@ -1,3 +1,4 @@
+<script src="component/mainend.js"></script>
 </body>
 </html>
 <?php

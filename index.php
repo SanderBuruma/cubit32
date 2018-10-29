@@ -43,8 +43,8 @@
       <div>
         <i class="fas fa-pencil-alt"></i>
         <h1>Designer</h1>
-        <p>Ik maak graag nette an overzichtelijke sites met goed bedachte interacties.</p>
-        <h6>Dingen die ik leuk vindt om te ontwerpen:</h6>
+        <p>Ik maak graag nette en overzichtelijke sites met goed bedachte interacties.</p>
+        <h6>Dingen die ik leuk vind om te ontwerpen:</h6>
         <p>UX, UI, Webgames, Webapps & Logos</p>
         <h6>Mijn Tools:</h6>
         <p>Visual Studio Code</p>
@@ -56,7 +56,7 @@
       <div>
         <i class="fas fa-flask"></i>
         <h1>Developer</h1>
-        <p>Ik werk het liefste een minimalistische set aan code en tools zodat mijn websites efficient zijn.</p>
+        <p>Ik werk het liefste met een minimalistische set aan code en tools zodat mijn websites efficient zijn.</p>
         <h6>Ik heb ervaring met:</h6>
         <p>HTML</p>
         <p>CSS</p>
@@ -107,7 +107,7 @@
         <div>
           <img src="svg/home-solid.svg"/>
           <div>
-            <p></p><p>GroHousing: vindt bijna letterlijk overal in Groningen een kamer.</p><a href="../database/">Bezoek!</a>
+            <p></p><p>GroHousing: vind bijna letterlijk overal in Groningen een kamer.</p><a href="../database/">Bezoek!</a>
           </div>
         </div>
         <div>
