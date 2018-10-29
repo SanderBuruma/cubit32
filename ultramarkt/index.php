@@ -1,7 +1,7 @@
 <?php
-require('component/main.php');
+require('includes/main.php');
 $_SESSION['page'] = "home";
-require('component/navbar.php');
+require('includes/navbar.php');
 ?>
 <div class="wrapper">
   <form action="./">
@@ -11,4 +11,4 @@ require('component/navbar.php');
   </form>
 </div>
 <?php
-require('component/mainend.php');
+require('includes/mainend.php');

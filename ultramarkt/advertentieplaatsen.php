@@ -1,10 +1,10 @@
 <?php
-require('component/main.php');
+require('includes/main.php');
 if (!isset($_SESSION['sessionID'])){
   header("Location: ./index.php?session=expired");
 }
-require('component/navbar.php');
-require('component/con_db.php');
+require('includes/navbar.php');
+require('includes/con_db.php');
 $sessionID = $_SESSION['sessionID'];
 
 if (isset($_POST['submit'])){
@@ -102,7 +102,7 @@ while($row = mysqli_fetch_array($result)) {
   </select>
   <button type="submit"   name='submit'>Plaats!</button>
 </form>
-<script src="./component/advertentieplaatsen.js"></script>
+<script src="./includes/advertentieplaatsen.js"></script>
 
 <?php
-require('component/mainend.php');
+require('includes/mainend.php');

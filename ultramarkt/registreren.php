@@ -1,10 +1,10 @@
 <?php
-require('component/main.php');
-require('component/navbar.php');
+require('includes/main.php');
+require('includes/navbar.php');
 
 if (isset($_POST['submit'])){
 
-  require('component/con_db.php');
+  require('includes/con_db.php');
 
   $username = strtolower(mysqli_real_escape_string($con,$_POST['username']));
   $email = strtolower(mysqli_real_escape_string($con,$_POST['email']));
@@ -78,4 +78,4 @@ if (isset($_POST['submit'])){
 </form>
 
 <?php
-require('component/mainend.php');
+require('includes/mainend.php');

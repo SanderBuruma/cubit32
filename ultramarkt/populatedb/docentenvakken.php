@@ -4,7 +4,7 @@ ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
 //populate table
-require('../component/con_db.php');
+require('../includes/con_db.php');
 
 //form vakIDArray
 $sql="SELECT vakID FROM vakken";

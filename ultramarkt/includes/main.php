@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>UltraMarkt</title>
-  <link rel="stylesheet" href="component/main.css">
+  <link rel="stylesheet" href="includes/main.css">
   <link rel="icon" href="img/markt1.png"> 
 </head>
 <body>
@@ -27,7 +27,7 @@ require("svg.php");
 // error_reporting(E_ALL);
 
 //iniate connection to db
-require('component/con_db.php');
+require('includes/con_db.php');
 
 //initiate reference arrays
 $alphaNumericChars = str_split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJVKLMNOPQRSTUVWXYZ1234567890");

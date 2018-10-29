@@ -1,7 +1,7 @@
 <?php
 
 require('zzzinformationarrays.php');
-require('../component/con_db.php');
+require('../includes/con_db.php');
 
 //populate table
 $con = mysqli_connect('localhost','root','w34#9^lgBJKV','demo_school');
