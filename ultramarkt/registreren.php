@@ -1,6 +1,6 @@
 <?php
-require('includes/main.php');
-require('includes/navbar.php');
+require_once('includes/main.php');
+require_once('includes/navbar.php');
 
 if (isset($_POST['submit'])){
 
@@ -87,4 +87,4 @@ if (isset($_POST['submit'])){
 </form>
 
 <?php
-require('includes/mainend.php');
+require_once('includes/mainend.php');

@@ -1,9 +1,9 @@
 <?php
-require('includes/main.php');
+require_once('includes/main.php');
 if (!isset($_SESSION['sessionID'])){
   header("Location: ./index.php?session=expired");
 }
-require('includes/navbar.php');
+require_once('includes/navbar.php');
 $sessionID = $_SESSION['sessionID'];
 
 if (isset($_POST['submit'])){
@@ -102,4 +102,4 @@ while($row = mysqli_fetch_array($result)) {
 <script src="./includes/advertentieplaatsen.js"></script>
 
 <?php
-require('includes/mainend.php');
+require_once('includes/mainend.php');

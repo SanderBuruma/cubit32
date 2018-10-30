@@ -11,8 +11,6 @@
 <pre>
 <?php
 
-print_r (date("ymdGis").explode(".",(microtime(true)))[1].random_int(10000,99999));
-print_r (htmlspecialchars("<html><body><script>alert('test')</script></body></html>"))
 
 ?>
 </pre>
