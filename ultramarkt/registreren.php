@@ -15,7 +15,7 @@ if (isset($_POST['submit'])){
   $stmt->bind_param("s",$username);
   $stmt->execute();
   $res = $stmt->get_result();
-  $result = $res->fetch_all(); 
+  $result = $res->fetch_all();
   $resultnruser = count($result);
 
   //grab users with same email
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])){
   $stmt->bind_param("s",$email);
   $stmt->execute();
   $res = $stmt->get_result();
-  $result = $res->fetch_all(); 
+  $result = $res->fetch_all();
   $resultnremail = count($result);
 
   if       ($resultnruser > 0){

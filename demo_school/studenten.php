@@ -4,7 +4,7 @@ $_SESSION['page'] = "studenten";
 require('component/navbar.php');
 
 // code voor oproepen sql informatie
-// $sql = "SELECT * FROM `studenten` ORDER BY `studenten`.`voornaam` ASC, `studenten`.`achternaam` ASC "; 
+// $sql = "SELECT * FROM `studenten` ORDER BY `studenten`.`voornaam` ASC, `studenten`.`achternaam` ASC ";
 // $result = mysqli_query($con,$sql);
 // $idarray = array();
 // while($row = mysqli_fetch_array($result)) {

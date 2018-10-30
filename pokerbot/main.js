@@ -52,7 +52,7 @@ function newHand(){
       document.getElementById('card'+i).classList.add('card-won');
     }
   } else if (winningHand){
-    document.getElementById('player1textspan').classList.add('green'); 
+    document.getElementById('player1textspan').classList.add('green');
     for (i of player1hand[2]){
       document.getElementById('card'+i).classList.add('card-won');
     }
@@ -139,7 +139,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
         for (let k=12 ; k>0 ; k--){
           let fiveHighStrFlush = false;
           if (suitRanksCount[k] && suitRanksCount[k-1]){//consecutive card found
-            consecCount++; 
+            consecCount++;
 
             if (consecCount>3){//strflush found
               for (l of cards){
@@ -304,7 +304,7 @@ function getHandValue(cards){//cards must be an array of the card numbers of 5+ 
           cards.reverse();//sort ascending
           for (k of cards){
             if (getRank(k)!=i && getRank(k)!=j){//found the kicker
-              handStr = getRank(k)+i*169+j*13; 
+              handStr = getRank(k)+i*169+j*13;
               returnCards.push(k);
               break;
             }

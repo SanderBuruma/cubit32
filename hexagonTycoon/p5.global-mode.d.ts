@@ -3462,9 +3462,9 @@ declare function imageMode(mode: IMAGE_MODE): void;
  *   pixel at (1, 0). More generally, to set values for 
  *   a pixel at (x, y): 
  * 
- *   var d = pixelDensity(); for (var i = 0; i < d; 
+ *   var d = pixelDensity(); for (var i = 0; i < d;
  *   i++) { for (var j = 0; j < d; j++) { // loop over 
- *   idx = 4 * ((y * d + j) * width * d + (x * d + i)); 
+ *   idx = 4 * ((y * d + j) * width * d + (x * d + i));
  *   pixels[idx] = r; pixels[idx+1] = g; pixels[idx+2] 
  *   = b; pixels[idx+3] = a; } }  
  * 
@@ -3674,7 +3674,7 @@ declare function filter(filterType: FILTER_TYPE, filterParam?: number): void;
  *   is  var x, y, d; // set these to the coordinates 
  *   var off = (y  width + x)  d * 4; var components = 
  *   [ pixels[off], pixels[off + 1], pixels[off + 2], 
- *   pixels[off + 3] ]; print(components);  
+ *   pixels[off + 3] ]; print(components);
  * 
  *  
  *   See the reference for pixels[] for more 
@@ -3874,7 +3874,7 @@ declare function loadStrings(filename: string, callback?: Function, errorCallbac
  *   example: 
  * 
  *   
- *   loadTable('my_csv_file.csv', 'csv', 'header');   
+ *   loadTable('my_csv_file.csv', 'csv', 'header');
  * 
  *  
  *   All files loaded and saved use UTF-8 encoding. 
@@ -3919,7 +3919,7 @@ declare function loadTable(filename: string, options: string, callback?: Functio
  *   example: 
  * 
  *   
- *   loadTable('my_csv_file.csv', 'csv', 'header');   
+ *   loadTable('my_csv_file.csv', 'csv', 'header');
  * 
  *  
  *   All files loaded and saved use UTF-8 encoding. 
@@ -4162,14 +4162,14 @@ declare function createWriter(name: string, extension?: string): p5.PrintWriter;
  *   example: 
  * 
  *  
- *   // Saves canvas as an image save('myCanvas.jpg'); 
+ *   // Saves canvas as an image save('myCanvas.jpg');
  *   // Saves pImage as a png image var img = 
  *   createImage(10, 10); save(img, 'my.png'); // Saves 
  *   canvas as an image var cnv = createCanvas(100, 
  *   100); save(cnv, 'myCanvas.jpg'); // Saves 
  *   p5.Renderer object as an image var gb = 
  *   createGraphics(100, 100); save(gb, 
- *   'myGraphics.jpg'); var myTable = new p5.Table(); 
+ *   'myGraphics.jpg'); var myTable = new p5.Table();
  *   // Saves table as html file save(myTable, 
  *   'myTable.html'); // Comma Separated Values 
  *   save(myTable, 'myTable.csv'); // Tab Separated 
@@ -4178,7 +4178,7 @@ declare function createWriter(name: string, extension?: string): p5.PrintWriter;
  *   save(myJSON, 'my.json'); // Optimizes JSON 
  *   filesize save(myJSON, 'my.json', true); // Saves 
  *   array of strings to a text file with line breaks 
- *   after each item var arrayOfStrings = ['a', 'b']; 
+ *   after each item var arrayOfStrings = ['a', 'b'];
  *   save(arrayOfStrings, 'my.txt');
  *
  *   @param [objectOrFilename] If filename is provided, 

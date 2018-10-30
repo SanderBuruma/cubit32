@@ -38,7 +38,7 @@ foreach ($docentIDArray as $i){
   $docentID = $i;
   $sql = "INSERT INTO `docentenvakken` (`docentenvakkenID`, `vakID`, `docentID`) VALUES (NULL, '$vakID', '$docentID')";
   $temp = escapeshellcmd($sql);
-  $result = mysqli_query($con,$sql); 
+  $result = mysqli_query($con,$sql);
 }
 
 mysqli_close($con);

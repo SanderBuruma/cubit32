@@ -14,7 +14,7 @@ if (isset($_POST['submit'])){
   $stmt->execute();
   $res = $stmt->get_result();
   $result = $res->fetch_all()[0];
-  $dbPasswordMD5 = $result[0];  
+  $dbPasswordMD5 = $result[0];
   $passwordSalt = $result[1];
   $passwordMD5 = hash("sha3-512",$password.$passwordSalt);
 

@@ -35,11 +35,11 @@ if (isset($_POST['submit'])){
     $result = $res->fetch_all()[0];
     $userID = $result[0];
 
-    $categorieID = filter_var($_POST['categorie'],FILTER_VALIDATE_INT); 
-    $subcategorieID = filter_var($_POST['subcategorie'],FILTER_VALIDATE_INT); 
-    $prijs = filter_var($_POST['prijs'],FILTER_VALIDATE_FLOAT); 
-    $beschrijving = filter_var($_POST['beschrijving'],FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
-    $titel = filter_var($_POST['titel'],FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+    $categorieID = filter_var($_POST['categorie'],FILTER_VALIDATE_INT);
+    $subcategorieID = filter_var($_POST['subcategorie'],FILTER_VALIDATE_INT);
+    $prijs = filter_var($_POST['prijs'],FILTER_VALIDATE_FLOAT);
+    $beschrijving = filter_var($_POST['beschrijving'],FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $titel = filter_var($_POST['titel'],FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     $datumplaatsing = date("y-m-d");
     $tijdplaatsing = date("G:i:s");
