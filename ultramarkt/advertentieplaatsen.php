@@ -51,19 +51,21 @@ if (isset($_POST['submit'])){
 }
 
 //get categorieen
-$sql = "SELECT * FROM categorieen";
-$result = mysqli_query($con,$sql);
+$stmt = $con->prepare("SELECT * FROM categorieen ORDER BY naam ASC");
+$stmt->execute();
+$stmt->bind_result($categorieID,$naam);
 $categorieArray = array();
-while($row = mysqli_fetch_array($result)) {
-    array_push($categorieArray,$row);
+while($stmt->fetch()){
+  array_push($categorieArray,array('categorieID' => $categorieID,'naam'=>$naam));
 }
 
 //get subcategorieen
-$sql = "SELECT * FROM subcategorieen ORDER BY naam ASC";
-$result = mysqli_query($con,$sql);
+$stmt = $con->prepare("SELECT * FROM subcategorieen ORDER BY naam ASC");
+$stmt->execute();
+$stmt->bind_result($subcategorieID,$categorieID,$naam);
 $subcategorieArray = array();
-while($row = mysqli_fetch_array($result)) {
-  array_push($subcategorieArray,$row);
+while($stmt->fetch()){
+  array_push($subcategorieArray,array('subcategorieID' => $subcategorieID,'categorieID' => $categorieID,'naam'=>$naam));
 }
 
 ?>
