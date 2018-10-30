@@ -136,6 +136,7 @@ img.navbar-icon{
 
 #search-input{
   font-size: 2rem;
+  height: 48px;
   width: 50%;
   left: 25%;
   text-align: center;
@@ -143,10 +144,25 @@ img.navbar-icon{
   border-radius: 1rem;
   box-shadow: 0px 0px 4px var(--main-color-dark);
   border: 0;
+  background-color: none;
   transition: box-shadow 0.5s;
 }
 #search-input:focus{
   box-shadow: 0px 0px 8px white;
+}
+#search-input>input[name="searchInput"]{
+  border: 0;
+  height: 48px;
+  top: 0;
+  float: left;
+  width: 60%;
+  border-radius: 10px;
+}
+#search-input>select[name="categorie"]{
+  height: 48px;
+  top: 0;
+  float: left;
+  width: 39.4%;
 }
 
 form#registreer,
