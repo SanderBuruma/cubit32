@@ -8,7 +8,10 @@ require_once('includes/get.categorieen.php');
 require_once('includes/mainopen.php');
 
 if(isset($_GET['advertentie'])){
-  echo "<script>advertentie.php fout: ".$_GET['advertentie']."</script>";
+  echo "<script>alert('advertentie.php fout: ".$_GET['advertentie']."')</script>";
+}
+if(isset($_GET['session']) && $_GET['session'] == 'expired'){
+  echo "<script>alert('fout: sessie is verlopen')</script>";
 }
 ?>
 <div class="wrapper">

@@ -44,6 +44,9 @@ if (isset($_GET['id'])){
 require_once('includes/mainopen.php');
 require_once('includes/navbar.php');
 
+$titel = filter_var($titel,FILTER_SANITIZE_STRING);
+$prijs = filter_var($prijs,FILTER_SANITIZE_STRING);
+$beschrijving = filter_var($beschrijving,FILTER_SANITIZE_STRING);
 echo "
 <div class=\"advertentie\">
   <div class=\"titel\">$titel<br/><p>$hoofdcategorieNaam - $subcategorieNaam</p></div>
