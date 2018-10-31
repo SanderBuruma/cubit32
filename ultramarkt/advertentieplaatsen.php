@@ -3,6 +3,7 @@ require_once('includes/main.php');
 if (!isset($_SESSION['sessionID'])){
   header("Location: ./index.php?session=expired");
 }
+require_once('includes/mainopen.php');
 require_once('includes/navbar.php');
 $sessionID = $_SESSION['sessionID'];
 
@@ -19,10 +20,7 @@ if (isset($_POST['submit'])){
     $targetFolder = "productafbeeldingen/";
     $extension = ".".explode(".",$_FILES['image1']['name'])[1];
     $image1path = $targetFolder.date("ymdGis").explode(".",(microtime(true)))[1].random_int(1e8,1e9-1).$extension;
-    if (move_uploaded_file($_FILES["image1"]["tmp_name"], $image1path)) {
-      //success
-      $_SESSION['success'] = "file uploaded";
-    }else{
+    if (!move_uploaded_file($_FILES["image1"]["tmp_name"], $image1path)){
       //failure
       $_SESSION['warning'] = "image1 failed to upload";
     }
@@ -31,9 +29,9 @@ if (isset($_POST['submit'])){
     $stmt = $con->prepare("SELECT userID FROM users WHERE sessionID = ?");
     $stmt->bind_param("s",$sessionID);
     $stmt->execute();
-    $res = $stmt->get_result();
-    $result = $res->fetch_all()[0];
-    $userID = $result[0];
+    $stmt->bind_result($userID);
+    $stmt->fetch();
+    $con->close();
 
     $categorieID = filter_var($_POST['categorie'],FILTER_VALIDATE_INT);
     $subcategorieID = filter_var($_POST['subcategorie'],FILTER_VALIDATE_INT);
@@ -44,6 +42,7 @@ if (isset($_POST['submit'])){
     $datumplaatsing = date("y-m-d");
     $tijdplaatsing = date("G:i:s");
 
+    include('includes/con_db_ultramarkt.php');
     $stmt = $con->prepare("INSERT INTO advertentie (categorieID, subcategorieID, userID, prijs, beschrijving, datumplaatsing, tijdplaatsing, titel, image1) VALUES (?,?,?,?,?,?,?,?,?)");
     $stmt->bind_param("iiidsssss",$categorieID,$subcategorieID,$userID,$prijs,$beschrijving,$datumplaatsing,$tijdplaatsing,$titel,$image1path);
     $stmt->execute();
@@ -67,6 +66,7 @@ $subcategorieArray = array();
 while($stmt->fetch()){
   array_push($subcategorieArray,array('subcategorieID' => $subcategorieID,'categorieID' => $categorieID,'naam'=>$naam));
 }
+
 
 ?>
 

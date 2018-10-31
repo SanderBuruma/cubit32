@@ -1,6 +1,5 @@
 <?php
 require_once('includes/main.php');
-require_once('includes/navbar.php');
 
 if (isset($_POST['submit'])){
 
@@ -14,6 +13,8 @@ if (isset($_POST['submit'])){
   $stmt->execute();
   $stmt->bind_result($dbPasswordMD5,$passwordSalt);
   $stmt->fetch();
+  $con->close();
+
   $passwordMD5 = hash("sha3-512",$password.$passwordSalt);
 
   if (empty($password) || empty($username)){
@@ -29,15 +30,21 @@ if (isset($_POST['submit'])){
     $sessionID = "";
     for ($i=0 ; $i<60 ; $i++){$sessionID .= $alphaNumericChars[array_rand($alphaNumericChars)];}
 
-    $sql = "UPDATE users SET sessionID = '$sessionID' WHERE users.username = '$username'";
-    mysqli_query($con,$sql);
+    include('includes/con_db_ultramarkt.php');
+    $stmt = $con->prepare("UPDATE users SET sessionID = ? WHERE username = ?");
+    $stmt->bind_param("ss",$sessionID,$username);
+    $stmt->execute();
+    $con->close();
     $_SESSION['success'] = "ingelogt als \"$username\"!";
     $_SESSION['sessionID'] = $sessionID;
     $_SESSION['username'] = $username;
-    header("Location: ./index.php?inloggen=success");
+    header("Location: ./index.php?inloggen=$username");
 
   }
 }
+
+require_once('includes/mainopen.php');
+require_once('includes/navbar.php');
 ?>
 
 <form id="inloggen" action="inloggen.php" method="POST">

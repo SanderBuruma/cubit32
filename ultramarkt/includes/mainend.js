@@ -1,1 +1,1 @@
-//in theory there should be some sort of code here
+document.querySelector('html').style.display = "block";

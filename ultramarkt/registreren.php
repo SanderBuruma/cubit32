@@ -1,6 +1,5 @@
 <?php
 require_once('includes/main.php');
-require_once('includes/navbar.php');
 
 if (isset($_POST['submit'])){
 
@@ -73,6 +72,8 @@ if (isset($_POST['submit'])){
     
   }
 }
+require_once('includes/mainopen.php');
+require_once('includes/navbar.php');
 ?>
 
 <form id="registreer" action="registreren.php" method="POST">

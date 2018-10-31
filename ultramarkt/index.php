@@ -5,12 +5,10 @@ require_once('includes/navbar.php');
 
 require_once('includes/get.categorieen.php');
 
+require_once('includes/mainopen.php');
+
 if(isset($_GET['advertentie'])){
-  if     ($_GET['advertentie'] == 'sqlfailure'){
-    echo '<script>alert("sql query failed, advertentie niet gevonden.")</script>';
-  }elseif($_GET['advertentie'] == 'noid'){
-    echo '<script>alert("advertentie.php heeft geen id nummer ontvangen.")</script>';
-  }
+  echo "<script>advertentie.php fout: ".$_GET['advertentie']."</script>";
 }
 ?>
 <div class="wrapper">
@@ -40,7 +38,7 @@ if(isset($_GET['advertentie'])){
         $stmt->execute();
         $stmt->bind_result($advertentieID,$prijs,$titel,$image1path);
         while($stmt->fetch()){
-          echo "<a href='advertentie.php?id=$advertentieID'><div class='advertentie'><img src='$image1path' /><h6> €".$prijs."</h6><p>".$titel."</p></div></a>";
+          echo "<a href='advertentie.php?id=$advertentieID'><div class='advertentie-in-lijst'><img src='$image1path' /><h6> €".$prijs."</h6><p>".$titel."</p></div></a>";
         }
       }
       if ($_GET['categorieID'] == 0){
