@@ -27,8 +27,6 @@ html{
 
 body{
   font-size: 12px;
-  /* background-image: url("../img/tulips2.jpeg");
-  background-size: cover; */
   height: 100%;
 }
 #bgimage{
@@ -209,12 +207,16 @@ form>button[type="submit"]{
   width: 25%;
 }
 
+#search-index{
+  top: 50px;
+  display: grid;
+}
+
 #search-input{
   font-size: 2rem;
   height: 48px;
   width: 50%;
   left: 25%;
-  top: 50px;
   border-radius: 1rem;
   border: 0;
   background-color: none;
@@ -237,26 +239,62 @@ form>button[type="submit"]{
   font-size: 24px;
 }
 #search-input>select[name="categorieID"]{
-  height: 48px;
+  height: 50px;
   font-size: 16px;
-  top: 0;
+  top: -2px;
   float: left;
   width: 29.4%;
 }
 
 #zoek-resultaten{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #faa;
+  width: 80%;
+  left: 10%;
+}
+#zoek-resultaten>a{
+  width: 200px;
+  background-color: #aaf;
+  margin: 5px;
+  box-shadow: 0 0 4px #666;
+  transition: box-shadow 0.2s ease-in-out;
+}
+#zoek-resultaten>a:hover{
+  box-shadow: 4px 4px 8px #666;
 }
 #zoek-resultaten>a>div{
-
+  font-size: 1em;
 }
 #zoek-resultaten>a>div>img{
-  max-width: 100px;
-  max-height: 80px;
-  min-width: 50px;
-  min-height: 40px;
+  width: 200px;
+  height: 160px;
+}
+#zoek-resultaten>a>div>h6{
+  font-size: 1.5em;
+  margin: 4px;
+}
+#zoek-resultaten>a>div>p{
+  font-size: 1.2em;
+  margin: 4px;
+}
+
+.advertentie{
+  width: 90%;
+  min-height: 800px;
+  left: 5%;
+  background-color: white;
+  border-radius: 1rem;
+}
+.advertentie>img.main{
+  float: left;
+  max-width: 200px;
+  width: 100%;
+}
+.advertentie>div.informatie{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
