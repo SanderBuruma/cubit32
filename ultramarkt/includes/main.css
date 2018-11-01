@@ -35,16 +35,15 @@ body{
   left: 0;
   right: 0;
   z-index: -1;
-
   display: block;
   background-image: url('../img/tulips3.png');
   background-size: cover;
   height: 1200px;
-  -webkit-filter: blur(3px);
-  -moz-filter: blur(3px);
-  -o-filter: blur(3px);
-  -ms-filter: blur(3px);
-  filter: blur(3px);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
 }
 
 a{
@@ -204,8 +203,9 @@ form>button[type="submit"]{
   color: var(--main-color-dark);
   background-color: white;
   font-size: 1.2rem;
-  left: 37.5%;
-  width: 25%;
+  left: 0;
+  min-width: 147px;
+  margin: 4px auto 0 auto;
 }
 
 #search-index{
@@ -281,15 +281,20 @@ form>button[type="submit"]{
   font-size: 1.2em;
   margin: 4px;
 }
-body>div.advertentie{
+.advertentie{
   left: 5rem;
   top: 5rem;
-}
-.advertentie{
   display: grid;
   grid-template-columns: 1fr;
   width: 60%;
   border-radius: 1rem;
+  box-shadow: 0 0 1rem white;
+}
+@media screen and (max-width: 800px){
+  .advertentie{
+    width: 100%;
+    left: 0;
+  }
 }
 .advertentie>.titel{
   background-color: var(--main-color-light);
@@ -332,4 +337,42 @@ body>div.advertentie{
 }
 .advertentie>div.informatie>div.beschrijving>h6{
   font-size: 2rem;
+}
+.contact-info{
+  top: 8rem;
+  right: 5rem;
+  position: absolute;
+  width: 22%;
+  min-width: 210px;
+  text-align: center;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem var(--main-color-dark);
+}
+@media screen and (max-width: 800px){
+  .contact-info{
+    position: relative;
+    left: 0;
+    width: 250px;
+    margin: auto;
+  }
+}
+.contact-info>h6{
+  font-size: 1.8rem;
+  background-color: var(--main-color-dark);
+  color: white;
+  border-radius: 1rem 1rem 0 0;
+}
+.contact-info>p.email{
+  background-color: var(--main-color-light);
+  font-size: 1.2rem;
+  border-radius: 0;
+}
+.contact-info>p.telefoonNr{
+  font-size: 1.2rem;
+  border-radius: 0 0 1rem 1rem;
+  background-color: var(--main-color-dark);
+  color: white;
+}
+.contact-info>*{
+  padding: 4px 0 4px 0;
 }

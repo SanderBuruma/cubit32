@@ -24,12 +24,24 @@ if (isset($_GET['id'])){
       $stmt->bind_param("i",$subcategorieID);
       $stmt->execute();
       $stmt->bind_result($subcategorieNaam);
-      if(!$stmt->fetch()){
-        header("location: index.php?advertentie=sqlsubcatfail");
+      if($stmt->fetch()){
+        $con->close();
+    
+        include('includes/con_db_ultramarkt.php');
+        $stmt = $con->prepare('SELECT username,email,telefoonNr FROM users WHERE userID LIKE ?');
+        $stmt->bind_param("i",$userID);
+        $stmt->execute();
+        $stmt->bind_result($gebruikersNaam,$contactEmail,$telefoonNr);
+        if(!$stmt->fetch()){
+          header("location: index.php?advertentie=getusernamefail");
+          exit;  
+        }
+      }else{
+        header("location: index.php?advertentie=getsubcategoriefail");
         exit;  
       }
     }else{
-      header("location: index.php?advertentie=sqlcatfail");
+      header("location: index.php?advertentie=getcategoriefail");
       exit;  
     };
   }else{
@@ -57,6 +69,7 @@ echo "
     <div class=\"beschrijving\"><h6>Prijs: €$prijs,-</h6><br/><p>$beschrijving</p></div>
   </div>
 </div>";
+echo "<div class=\"contact-info\"><h6>$gebruikersNaam</h6><p class=\"email\">$contactEmail</p><p class=\"telefoonNr\">$telefoonNr</p></div>"
 ?>
 
 
