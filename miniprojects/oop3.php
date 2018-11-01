@@ -26,7 +26,7 @@ interface PaymentProcessInterface{
 
 class PayFee implements StandardPaymentInterface, PaymentProcessInterface, ThreeDSecureCheck{
   public function pay(){}
-  public function three
+  public function ThreeDSecureCheck(){}
   public function process(){
     $this->pay();
   }
