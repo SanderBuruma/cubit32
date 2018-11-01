@@ -23,13 +23,14 @@
       <svg viewBox="0 -72 700 500" class="font">
         <use xlink:href="#icon-advertentie"></use>
       </svg>
-      Advertentie Plaatsen  
+      Plaats
       </a>
       <p id="gebruikersnaam">
         <svg viewBox="0 -72 700 500" class="font">
           <use xlink:href="#icon-user"></use>
         </svg>
         '.$username.'
+        <div class="dropdown"></div>
       </p>';
     } else {
       echo '

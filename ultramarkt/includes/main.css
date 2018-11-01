@@ -28,6 +28,10 @@ html{
 body{
   font-size: 12px;
   height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 #bgimage{
   position: fixed;
@@ -38,7 +42,7 @@ body{
   display: block;
   background-image: url('../img/tulips3.png');
   background-size: cover;
-  height: 1200px;
+  height: 100%;
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
@@ -80,6 +84,7 @@ svg {
   position: fixed;
   width: 100%;
   z-index: 10;
+  top: 0;
 }
 
 #home{
@@ -122,20 +127,6 @@ svg {
   background-color: white;
   color: var(--main-color-dark);
 }
-@media screen and (max-width: 650px){
-  #inlog-btn,
-  #registreer-btn,
-  #uitloggen-btn,
-  #advertentie-plaatsen-btn,
-  #gebruikersnaam{
-    font-size: 0;
-  }
-  img.navbar-icon{
-    height: 1rem;
-    float: left;
-    top: 2px;
-  }
-}
 
 img.navbar-icon{
   height: 1em;
@@ -155,13 +146,20 @@ form#advertentie-formulier{
   text-align: center;
   color: var(--main-color-dark);
   background-color: var(--main-color-light);
-  margin-top: 3rem;
   width: 40%;
-  left: 30%;
   display: grid;
   grid-template-columns: auto;
   padding: 2rem;
   box-shadow: 0px 0px 15px var(--main-color-light);
+}
+@media screen and (max-width: 500px){
+  form#registreer,
+  form#inloggen,
+  form#advertentie-formulier{
+    width: 100%;
+    left: 0;
+    padding: 0;
+  }
 }
 
 form>h3{
@@ -229,6 +227,7 @@ form>button[type="submit"]{
   display: grid;
 }
 
+
 #search-input{
   font-size: 2rem;
   height: 48px;
@@ -238,6 +237,12 @@ form>button[type="submit"]{
   border: 0;
   background-color: none;
   transition: box-shadow 0.5s;
+}
+@media screen and (max-width: 500px){
+  #search-input{
+    width: 100%;
+    left: 0;
+  }
 }
 #search-input>*{
   box-shadow: 0px 0px 4px var(--main-color-dark);
@@ -271,6 +276,12 @@ form>button[type="submit"]{
   width: 80%;
   left: 10%;
 }
+@media screen and (max-width: 500px){
+  #zoek-resultaten{
+    width: 100%;
+    left: 0%;
+  }
+}
 #zoek-resultaten>a{
   width: 200px;
   background-color: #fff;
@@ -298,7 +309,6 @@ form>button[type="submit"]{
   margin: 4px;
 }
 .advertentie{
-  left: 5rem;
   top: 5rem;
   display: grid;
   grid-template-columns: 1fr;
@@ -310,6 +320,7 @@ form>button[type="submit"]{
   .advertentie{
     width: 100%;
     left: 0;
+    top: 10rem;
   }
 }
 .advertentie>.titel{
@@ -356,8 +367,6 @@ form>button[type="submit"]{
 }
 .contact-info{
   top: 8rem;
-  right: 5rem;
-  position: absolute;
   width: 22%;
   min-width: 210px;
   text-align: center;
@@ -366,10 +375,9 @@ form>button[type="submit"]{
 }
 @media screen and (max-width: 800px){
   .contact-info{
-    position: relative;
     left: 0;
     width: 250px;
-    margin: auto;
+    margin: 5rem auto 0 auto;
   }
 }
 .contact-info>h6{
@@ -391,4 +399,11 @@ form>button[type="submit"]{
 }
 .contact-info>*{
   padding: 4px 0 4px 0;
+}
+
+div.footer{
+  bottom: 0;
+  position: absolute;
+  margin: 0 auto;
+  z-index: -1;
 }
