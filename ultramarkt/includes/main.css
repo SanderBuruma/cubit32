@@ -74,10 +74,12 @@ svg {
 
 #topbar{
   background-color: var(--main-color-light);
-  height: 40px;
   padding: 4px 0 6px 5px;
   font-size: 25px;
   border-radius: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
 }
 
 #home{
@@ -119,6 +121,20 @@ svg {
 #gebruikersnaam{
   background-color: white;
   color: var(--main-color-dark);
+}
+@media screen and (max-width: 650px){
+  #inlog-btn,
+  #registreer-btn,
+  #uitloggen-btn,
+  #advertentie-plaatsen-btn,
+  #gebruikersnaam{
+    font-size: 0;
+  }
+  img.navbar-icon{
+    height: 1rem;
+    float: left;
+    top: 2px;
+  }
 }
 
 img.navbar-icon{
@@ -209,7 +225,7 @@ form>button[type="submit"]{
 }
 
 #search-index{
-  top: 50px;
+  top: 150px;
   display: grid;
 }
 
