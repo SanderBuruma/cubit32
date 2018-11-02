@@ -30,7 +30,6 @@
           <use xlink:href="#icon-user"></use>
         </svg>
         '.$username.'
-        <div class="dropdown"></div>
       </p>';
     } else {
       echo '
