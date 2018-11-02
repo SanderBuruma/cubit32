@@ -17,7 +17,9 @@ require_once("svg.php");
 //iniate connection to db
 require_once('includes/con_db_ultramarkt.php');
 
-//
+//everyting else
+require_once('../../hidden/passwords.php');
+$PHPMARootPassword = $PHPMAPasswords['root'];
 require_once('includes/class.userInterface.php');
 
 //initiate reference arrays

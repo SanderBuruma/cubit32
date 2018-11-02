@@ -8,8 +8,8 @@ if (isset($_POST['submit'])){
   $username = strtolower($_POST['username']);
 
   //grab password hash and password salt from same username
-  $stmt = $con->prepare("SELECT passwordMD5,passwordSalt FROM users WHERE username LIKE ?");
-  $stmt->bind_param("s",$username);
+  $stmt = $con->prepare("SELECT passwordMD5,passwordSalt FROM users WHERE username LIKE ? OR email LIKE ?");
+  $stmt->bind_param("ss",$username,$username);
   $stmt->execute();
   $stmt->bind_result($dbPasswordMD5,$passwordSalt);
   $stmt->fetch();

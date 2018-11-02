@@ -9,9 +9,13 @@
 </head>
 <body>
 <pre>
+  <form action="./">
+    <input type="submit" value="submit">
+  </form>
 <?php
-
-
+if (isset($_POST['submit'])){
+  echo $_POST['submit'];
+}
 ?>
 </pre>
 </body>
