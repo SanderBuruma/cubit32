@@ -8,5 +8,7 @@
   <link rel="stylesheet" href="includes/main.css">
   <link rel="icon" href="img/markt1.png"> 
 </head>
-<body>
 <div id="bgimage"></div>
+<body>
+
+<div class="wrapper">

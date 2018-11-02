@@ -26,13 +26,8 @@ if (isset($_POST['submit'])){
     }
 
     //get userID
-    $stmt = $con->prepare("SELECT userID FROM users WHERE sessionID = ?");
-    $stmt->bind_param("s",$sessionID);
-    $stmt->execute();
-    $stmt->bind_result($userID);
-    $stmt->fetch();
-    $con->close();
 
+    $userID = UserInterface::getUserID($con,$sessionID);
     $categorieID = filter_var($_POST['categorie'],FILTER_VALIDATE_INT);
     $subcategorieID = filter_var($_POST['subcategorie'],FILTER_VALIDATE_INT);
     $prijs = filter_var($_POST['prijs'],FILTER_VALIDATE_FLOAT);
@@ -42,7 +37,7 @@ if (isset($_POST['submit'])){
     $datumplaatsing = date("y-m-d");
     $tijdplaatsing = date("G:i:s");
 
-    include('includes/con_db_ultramarkt.php');
+    require('includes/con_db_ultramarkt.php');
     $stmt = $con->prepare("INSERT INTO advertentie (categorieID, subcategorieID, userID, prijs, beschrijving, datumplaatsing, tijdplaatsing, titel, image1) VALUES (?,?,?,?,?,?,?,?,?)");
     $stmt->bind_param("iiidsssss",$categorieID,$subcategorieID,$userID,$prijs,$beschrijving,$datumplaatsing,$tijdplaatsing,$titel,$image1path);
     $stmt->execute();
