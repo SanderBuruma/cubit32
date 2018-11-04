@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+//error reporting
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
+
+require_once('../../hidden/passwords.php');
+$PHPMARootPassword = $PHPMAPasswords['root'];
+require('includes/class.userInterface.php');
 ?>
 
 <!DOCTYPE html
@@ -69,6 +77,14 @@ loosely based on typeracer.com
 	<div class="wrapper">
 		<div			id="main-menu"		class="main-menu unselectable">
 			<span><a id="main-menu-practice" href="javascript:;">>Practice<</a><br>Improve your typing skills!</span>
+			<select id="practice-category-select">
+			<option value="random">Random</option>
+			<?php 
+$arr = userInterface::categoryInfo();
+foreach($arr as $value){
+	echo "<option value=\"".$value['categoryID']."\">".$value['name']."</option>";
+}
+			?></select>
 		</div>
 		<div        	id="scribo-box" 	class="scribo-box" hidden="true" >
 			<span   	id="wpm-counter" 	class="wpm-counter unselectable">Waiting for you to type!</span><br>
@@ -79,8 +95,8 @@ loosely based on typeracer.com
 			<input  	id="text-input" 	class="text-input" autocorrect="off" autocapitalize="off" type="text" />
 		</div>
 		<div class="race-info-box" id="race-info-box"><table><tbody>
-		<tr><td >Source: </td><td id="race-info-source">none</td></tr>
-		<tr><td >Book: </td><td id="race-info-book">none</td></tr>
+		<tr><td >Name: </td><td id="race-info-source">none</td></tr>
+		<tr><td >Source: </td><td id="race-info-book">none</td></tr>
 		<tr><td >WPM: </td><td id="race-info-wpm">0</td></tr>
 		<tr><td >Time: </td><td id="race-info-time">0m 0s</td></tr>
 		</tbody></table></div>
