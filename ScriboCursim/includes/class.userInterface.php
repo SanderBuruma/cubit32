@@ -36,7 +36,7 @@ class UserInterface{
 		if ($categoryID == 'random'){
 			$stmt = self::$con->prepare('SELECT id FROM texts');
 		}else{
-			//2 queries here work all the same
+			//use 1 of the 2 of these queries
 			//SELECT T.id FROM texts T JOIN subcategory S ON S.subcategoryID = T.subcategoryID WHERE S.categoryID = ?
 			//SELECT id FROM texts WHERE texts.subcategoryID IN (SELECT subcategoryID FROM subcategory WHERE categoryID = ?)
 			$stmt = self::$con->prepare('SELECT T.id FROM texts T JOIN subcategory S ON S.subcategoryID = T.subcategoryID WHERE S.categoryID = ?');
