@@ -3,7 +3,7 @@ let currentText, wpmInterval;
 document.getElementById("text-input").addEventListener("keyup",         txtInputChange);
 document.getElementById("text-input").addEventListener("keydown",       txtInputChange);
 document.getElementById("main-menu-practice").addEventListener("click", mainMenuPractice);
-let startTypingDate = 0;
+let startTypingDate = +new Date();
 let previousLength = 0; //a cheat detection variable, if more than 1 char shows up at a time something was copy pasted
 
 function txtInputChange(a){

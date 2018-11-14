@@ -70,8 +70,6 @@ nav > ul > li > ul > li{
   color: var(--main-color-dark);
   border: var(--main-color-dark) solid 2px;
 }
-nav > ul > li > ul > li > a{
-}
 
 form{
   text-align: left;
