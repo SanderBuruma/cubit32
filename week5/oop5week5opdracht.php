@@ -12,9 +12,10 @@ interface CRUD{
 
 class Entity{
   protected static $conn;
-  protected $id;
-  include_once('')
+  protected static $id;
+
   static function init() {
+    include_once('../passwords.php');
     self::$conn = new mysqli('localhost', 'omni', $PHPMAPasswords->omni) or die(product::$conn->connect_error);
     self::$conn->select_db('gorilla') or die('database niet geselecteerd');
   }
