@@ -87,7 +87,7 @@
     <div class="bluebg">
       <div id="projects">
         <div style="--blueish: #f33; --border: 2px dashed var(--blueish);">
-          <img src="svg/mijter.svg"/>
+          <img src="svg/sinterklaas.svg"/>
           <div>
             <p></p><p>Maak een verlanglijstje voor sinterklaas. Deel hem met inbegrepen link. Alleen de mensen die de link hebben kunnen hem zien.</p><a href="http://sinterklaasverlanglijstje.herokuapp.com/">Bezoek!</a>
           </div>
