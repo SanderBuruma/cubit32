@@ -4,7 +4,7 @@
 <body>
 
 <?php
-$con = mysqli_connect('localhost','root','w34#9^lgBJKV','GroHousing');
+$con = mysqli_connect('localhost','omni','Oc49oPzxGnzpTQNk','GroHousing');
 if (!$con) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL."<br>";
     echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL ."<br>";

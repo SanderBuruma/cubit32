@@ -1,8 +1,8 @@
 <?php
-
+include("../passwords.php");
 $dbServerName = "localhost";
-$dbUserName = "root";
-$dbPassword = "w34#9^lgBJKV";
+$dbUserName = "omni";
+$dbPassword = $PHPMAPasswords->omni;
 $dbName = "scribo_cursim";
 
 $conn = mysqli_connect($dbServerName,$dbUserName,$dbPassword,$dbName);

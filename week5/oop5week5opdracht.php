@@ -13,8 +13,9 @@ interface CRUD{
 class Entity{
   protected static $conn;
   protected $id;
+  include_once('')
   static function init() {
-    self::$conn = new mysqli('localhost', 'root', 'w34#9^lgBJKV') or die(product::$conn->connect_error);
+    self::$conn = new mysqli('localhost', 'omni', $PHPMAPasswords->omni) or die(product::$conn->connect_error);
     self::$conn->select_db('gorilla') or die('database niet geselecteerd');
   }
 }

@@ -5,7 +5,7 @@ class UserInterface{
   protected static $con;
   static function init() {
     global $PHPMARootPassword;
-    self::$con = new mysqli('localhost', 'root', "$PHPMARootPassword") or die(product::$con->connect_error);
+    self::$con = new mysqli('localhost', 'omni', "$PHPMARootPassword") or die(product::$con->connect_error);
     self::$con->select_db('ultramarkt') or die('database niet geselecteerd');
   }
 

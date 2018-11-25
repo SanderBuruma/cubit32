@@ -12,8 +12,8 @@ ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
 //everyting else
-require_once('../../hidden/passwords.php');
-$PHPMARootPassword = $PHPMAPasswords['root'];
+require_once('../passwords.php');
+$PHPMARootPassword = $PHPMAPasswords['omni'];
 //iniate connection to db
 require_once('includes/con_db_ultramarkt.php');
 require_once('includes/class.userInterface.php');

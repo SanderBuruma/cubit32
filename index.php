@@ -89,6 +89,12 @@
         <div>
           <img src="svg/balance-scale-solid.svg"/>
           <div>
+            <p></p><p>Cubit CRM: Mijn eerste poging om een pseudo CRM to maken met Laravel.</p><a href="../ultramarkt/">Bezoek!</a>
+          </div>
+        </div>
+        <div>
+          <img src="svg/balance-scale-solid.svg"/>
+          <div>
             <p></p><p>UltraMarkt: Een imitatie van Marktplaats.</p><a href="../ultramarkt/">Bezoek!</a>
           </div>
         </div>

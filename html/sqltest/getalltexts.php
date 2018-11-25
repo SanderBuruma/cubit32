@@ -19,7 +19,8 @@ th {text-align: left;}
 <body>
 
 <?php
-$con = mysqli_connect('localhost','root','w34#9^lgBJKV','scribo_cursim');
+include('../passwords.php');
+$con = mysqli_connect('localhost','omni','Oc49oPzxGnzpTQNk','scribo_cursim');
 if (!$con) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL."<br>";
     echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL ."<br>";

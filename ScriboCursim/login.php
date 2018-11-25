@@ -2,8 +2,9 @@
 session_start();
 
 if (isset($_POST['submit'])){
-
-	$conn = mysqli_connect('localhost','root','w34#9^lgBJKV','scribo_cursim');
+	
+	include_once('../passwords.php');
+	$conn = mysqli_connect('localhost','omni',$PHPMAPasswords->omni,'scribo_cursim');
 
 	$uid = mysqli_real_escape_string($conn, $_POST['userid']);
 	$pwd = mysqli_real_escape_string($conn, $_POST['password']);
