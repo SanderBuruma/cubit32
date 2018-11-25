@@ -86,10 +86,16 @@
     </div>
     <div class="bluebg">
       <div id="projects">
-        <div>
-          <img src="svg/balance-scale-solid.svg"/>
+        <div style="--blueish: #f33; --border: 2px dashed var(--blueish);">
+          <img src="svg/mijter.svg"/>
           <div>
-            <p></p><p>Cubit CRM: Mijn eerste poging om een pseudo CRM to maken met Laravel.</p><a href="../ultramarkt/">Bezoek!</a>
+            <p></p><p>Maak een verlanglijstje voor sinterklaas. Deel hem met inbegrepen link. Alleen de mensen die de link hebben kunnen hem zien.</p><a href="http://sinterklaasverlanglijstje.herokuapp.com/">Bezoek!</a>
+          </div>
+        </div>
+        <div>
+          <img src="svg/cubit32.svg"/>
+          <div>
+            <p></p><p>Cubit CRM: Mijn eerste poging om een pseudo CRM to maken met Laravel.</p><a href="http://crm-cubit.herokuapp.com/register">Bezoek!</a>
           </div>
         </div>
         <div>
