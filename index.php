@@ -86,10 +86,16 @@
     </div>
     <div class="bluebg">
       <div id="projects">
+        <div>
+          <img src="svg/template.svg"/>
+          <div>
+            <p>Default Template: </p><p>Een standaard template voor toekomstige Laravel projecten, met een aantal standaard functionaliteiten.</p><a href="http://defaultcubit.herokuapp.com/">Bezoek!</a>
+          </div>
+        </div>
         <div style="--blueish: #f33; --border: 2px dashed var(--blueish);">
           <img src="svg/sinterklaas.svg"/>
           <div>
-            <p></p><p>Maak een verlanglijstje voor sinterklaas. Deel hem met inbegrepen link. Alleen de mensen die de link hebben kunnen hem zien.</p><a href="http://sinterklaasverlanglijstje.herokuapp.com/">Bezoek!</a>
+            <p>Sinterklaas: </p><p>Maak een verlanglijstje voor sinterklaas. Deel hem met inbegrepen link. Alleen de mensen die de link hebben kunnen hem zien.</p><a href="http://sinterklaasverlanglijstje.herokuapp.com/">Bezoek!</a>
           </div>
         </div>
         <div>
