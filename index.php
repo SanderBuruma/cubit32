@@ -30,9 +30,9 @@
         <img id="portret" src="img/myAvatar.svg" alt="Mooie foto van Sander"> 
         <div id="changing-text-container">
           <p id="changing-text">Ik codeer simpele en responsieve websites. Fraai en netjes worden mijn websites gemaakt. Neem gerust een kijk door mijn <a href="#projects">projecten</a> om dat te zien!<br/><br/> 
-          Mijn passie ligt in het analyseren van de werking van dingen en van logica. Daarnaast speel ik ook wel eens piano wanneer deze beschikbaar is. Naast jr Web Developer ben ik ook opgeleid als medisch laborant en zondags dien ik wel eens den heilige mis in Warfhuizen omdat ik het Katholicisme geweldig vind.</p>
+          Mijn passie ligt in het analyseren van de werking van dingen en van logica. Daarnaast speel ik ook wel eens piano wanneer deze beschikbaar is. Naast jr Web Developer ben ik ook opgeleid als medisch laborant.</p>
         </div>
-        <img id="desktop" src="img/bgheaderbottom.png" alt="Afbeelding met afbeelding van aarde & maan met afmetingen, laptop, kopje koffie, tablet en schermen">
+        <img id="desktop" src="svg/bgheaderbottom.svg" alt="Afbeelding met afbeelding van aarde & maan met afmetingen, laptop, kopje koffie, tablet en schermen">
       </div>
     </div>
     <div id="about">
