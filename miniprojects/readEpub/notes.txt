@@ -1,0 +1,2 @@
+to match the header, $1 is the desired match
+<h1.*?>\n +(.*?)\n.*?\n
