@@ -29,7 +29,7 @@ foreach ($indexSite as $v) {
     $title = $matches[1];
 
     //fetch the main body of the text
-    $expl = preg_split('/<\/h1>/',$targetSite)[1];
+    $expl = preg_split('/<\/h4>/',$targetSite)[1];
     $expl = preg_split('/(Introduction and translation|<a)/',$expl)[0];
 
     //remove bracketed garbage
@@ -40,8 +40,6 @@ foreach ($indexSite as $v) {
     //remove tags
     $expl = preg_replace('/<(strong|em) ?.*?>(.*?)<\/\1>/','/$2/',$expl);
 
-
-    $expl = preg_split('/^.*?([A-Z]{8,})(?=[A-Z])/',$expl)[1];
     $expl = preg_split('/<(p|ol|ul|li).*?>\n\s+/',$expl);
 
     //split by periods
@@ -54,6 +52,7 @@ foreach ($indexSite as $v) {
       $temp = preg_replace('/\}.*/','',$temp);
       $temp = preg_replace('/&\#\d{4}/','',$temp);
       $temp = preg_replace('/\//','',$temp);
+      $temp = preg_replace('/\;/','',$temp);
       if (strlen($temp) > 15 && preg_match('/[^a-zA-Z0-9 ].+/',$temp)) {
         preg_match('/^.*?([A-Z][a-z].+)/',$temp,$matches);
         $readableText[] = $matches[1].".";
@@ -62,8 +61,10 @@ foreach ($indexSite as $v) {
     break;  
   }
 }
-var_dump(explode(" &#8211; ",$title)[0]);
-var_dump($readableText);
+echo (explode(" &#8211; ",$title)[0]);
+foreach($readableText as $k => $v) {
+  echo "<br>$k: ".$v;
+}
 
 
 ?>
