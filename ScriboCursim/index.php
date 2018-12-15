@@ -86,13 +86,13 @@ foreach($arr as $value){
 }
 			?></select>
 		</div>
-		<div        	id="scribo-box" 	class="scribo-box" hidden="true" >
-			<span   	id="wpm-counter" 	class="wpm-counter unselectable">Waiting for you to type!</span><br>
+		<div       	id="scribo-box" 		class="scribo-box" hidden="true" >
+			<span   	id="wpm-counter" 		class="wpm-counter unselectable">Waiting for you to type!</span><br>
 			<span   	id="text-was-typed" class="text-was-typed unselectable">loading text</span><!--
-			--><span   	id="text-wrong" 	class="text-wrong unselectable"> please hold on... </span><!--
-			--><span   	id="text-next-char"	class="text-next-char unselectable"> holding... </span><!--
-			--><span   	id="text-to-type" 	class="text-to-type unselectable"><?php echo $text;?></span>
-			<input  	id="text-input" 	class="text-input" autocorrect="off" autocapitalize="off" type="text" />
+			--><span  id="text-wrong" 		class="text-wrong unselectable"> please hold on... </span><!--
+			--><span  id="text-next-char"	class="text-next-char unselectable"> holding... </span><!--
+			--><span  id="text-to-type" 	class="text-to-type unselectable"><?php echo $text;?></span>
+			<input  	id="text-input" 		class="text-input" autocorrect="off" autocapitalize="off" type="text" />
 		</div>
 		<div class="race-info-box" id="race-info-box"><table><tbody>
 		<tr><td >Name: </td><td id="race-info-source">none</td></tr>
