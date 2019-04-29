@@ -34,5 +34,28 @@
 # form submission code
 if (isset($_POST['name']))
 {
-  
+  <?php
+require('phpmailer/class.phpmailer.php');
+$mail = new PHPMailer();
+$mail->IsSMTP();
+$mail->SMTPDebug = 0;
+$mail->SMTPAuth = TRUE;
+$mail->SMTPSecure = "tls";
+$mail->Port     = 587;  
+$mail->Username = "sanderburuma@gmail.com";
+$mail->Password = "replacemeonceuploadedontheserver";
+$mail->Host     = "smtp.gmail.com";
+$mail->Mailer   = "smtp";
+$mail->SetFrom("Your from email", "from name");
+$mail->AddReplyTo($_POST['email'], "PHPPot");
+$mail->AddAddress("sanderburuma@gmail.com");
+$mail->Subject = "Test email using PHP mailer";
+$mail->WordWrap   = 80;
+$content = $_POST['message'] . " <b>This is a test email using PHP mailer class.</b>"; $mail->MsgHTML($content);
+$mail->IsHTML(true);
+if(!$mail->Send()) 
+echo "Problem sending email.";
+else 
+echo "email sent.";
+?>
 }
