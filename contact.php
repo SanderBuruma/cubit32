@@ -30,3 +30,9 @@
   </div>
 </body>
 </html>
+<?php
+# form submission code
+if (isset($_POST['name']))
+{
+  
+}
