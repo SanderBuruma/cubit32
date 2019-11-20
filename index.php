@@ -87,6 +87,12 @@
     <div class="bluebg">
       <div id="projects">
         <div>
+          <img src="svg/keyboard-regular.svg"/>
+          <div>
+            <p></p><p>Scribo Cursim: Leer snel te typen. Uw typesnelheid wordt bijgehouden en u kan zich registeren zodat u uw vooruitgang kan bijhouden en vergelijken met anderen.</p><a href="https://scribocursim.com/">Bezoek!</a>
+          </div>
+        </div>
+        <div>
           <img src="svg/template.svg"/>
           <div>
             <p>Default Template: </p><p>Een standaard template voor toekomstige Laravel projecten, met een aantal standaard functionaliteiten.</p><a href="http://defaultcubit.herokuapp.com/">Bezoek!</a>
@@ -114,12 +120,6 @@
           <img src="img/poker-chip-512.png" style="width: auto; left: 14.5%;"/>
           <div>
             <p></p><p>Poker Bot Wars: Programmeer uw eigen poker bot en zet hem los op de competitie!</p><a href="../pokerbot">Bezoek!</a>
-          </div>
-        </div>
-        <div>
-          <img src="svg/keyboard-regular.svg"/>
-          <div>
-            <p></p><p>Scribo Cursim: Leer snel te typen. Uw typesnelheid wordt bijgehouden en u kan zich registeren zodat u uw vooruitgang kan bijhouden en vergelijken met anderen.</p><a href="../ScriboCursim/">Bezoek!</a>
           </div>
         </div>
         <div>
